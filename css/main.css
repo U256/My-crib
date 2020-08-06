@@ -1,0 +1,268 @@
+@charset "UTF-8";
+/* блоки - независимые повторяющиеся элементы с 
+чётким определением 
+exmpl: section-title, label-text
+не имеют отступов! чтобы можно было повторно использовать
+отступы задаёт обёртка
+
+элементы - составная часть блока*
+элементы шапки сайта
+имя-класса-блока__имя-элемента
+
+можно совмещать блок и элемент в одном class="navigation_subtitle subtitle" */
+main, header, .top-section, footer {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+h1, h2, h3, h4 {
+  margin: 16px 0;
+  padding: 3px 10px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #e7acd5;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  border: 2px solid #3163fb;
+  border-radius: 0 15px;
+}
+
+.header-nav {
+  margin-top: 10px;
+  font-weight: 700;
+  background: #9c9cee;
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+.header-nav ul {
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+nav ul li {
+  margin: 16px 5px;
+  padding: 5px 10px;
+  list-style-type: none;
+  -webkit-box-shadow: 4px 4px 5px #8a8a8a;
+          box-shadow: 4px 4px 5px #8a8a8a;
+  /*гор. смещение вправо -- вертикальное вниз -- сила размытия -- цвет  */
+}
+
+nav ul li a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+h1 {
+  font-weight: 800;
+  border: 2px solid #4b77fc;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 30px/20px;
+}
+
+.gradient {
+  display: inline;
+  margin: 10px;
+  padding: 5px 5px 4px 5px;
+  display: inline-block;
+  background-color: aliceblue;
+  font-size: 12px;
+  border: 1px solid #908f8f;
+  -webkit-transition-property: background-color, font-size, border;
+  transition-property: background-color, font-size, border;
+  /*указывает, что будем анимировать*/
+  -webkit-transition-duration: 2s, 1s, 1s;
+          transition-duration: 2s, 1s, 1s;
+  -webkit-transition-delay: 0s, 0s, 0.5s;
+          transition-delay: 0s, 0s, 0.5s;
+  /*срок анимации*/
+}
+
+.gradient:hover {
+  background-color: rgba(250, 58, 202, 0.36);
+  padding: 5px 5px 4px 5px;
+  font-size: 15px;
+  border: 2px solid black;
+}
+
+#vkLink {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px;
+  border: 1px solid #000;
+  line-height: 20px;
+  -webkit-transition-property: padding;
+  transition-property: padding;
+  /* название CSS-свойств, к которым будет применен эффект перехода. Значение свойства может содержать как одно свойство, так и список свойств через запятую */
+  -webkit-transition-duration: 1.6s;
+          transition-duration: 1.6s;
+  /*Продолжительность перехода*/
+  -webkit-transition-timing-function: linear;
+          transition-timing-function: linear;
+  /*формат перехода, их куча, легче гуглить*/
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+  /*задержка перед переходом*/
+  -webkit-transition: padding 1s linear 0s;
+  transition: padding 1s linear 0s;
+  /*всё сразу, можно несколько свойств через запятую*/
+}
+
+#vkLink:hover {
+  padding: 10px 18px;
+}
+
+.crying-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: .7;
+}
+
+.img-wrapper {
+  height: 300px;
+  width: 300px;
+  /* тупа цвет */
+  background-color: salmon;
+  color: #fff;
+  /* устанавливает фоновое изображение (одно или несколько) */
+  background-image: -webkit-gradient(linear, left top, left bottom, from(white), to(gray));
+  background-image: linear-gradient(white, gray);
+  /* repeat (по умолчанию) */
+  background-repeat: repeat-x;
+  /* бесполезно почти всегда, иногда нужно fixed для фона */
+  background-attachment: scroll;
+  /*  %	Горизонтальное смещение вычисляется по формуле ширина области расположения фона — ширина фонового изображения. Вертикальное смещение по формуле высота области расположения фона - высота фонового изображения, где размер изображения — это размер, заданный свойством background-size. Значение по умолчанию 0% 0%. */
+  /* px	Задает фиксированную длину в качестве смещения. */
+  /* left/center/right top/center/bottom  
+	Если определить только одно значение, второе будет 50%. Xpos Ypos Верхний левый угол это 0 0. Любые CSS единицы.*/
+  background-position: 0 10px;
+  /*гор-верт*/
+  background-position: bottom 10px right 30px;
+  /* окантовка */
+  background-clip: border-box;
+  background-origin: border-box;
+  /*  %	Задает размер фонового изображения в процентах от ширины или высоты элемента, которое заполняется фоном. */
+  /* cover	Масштабирует изображение с сохранением пропорций так, чтобы его ширина или высота равнялась ширине или высоте блока. */
+  /* contain	Масштабирует изображение с сохранением пропорций таким образом, чтобы оно целиком поместилось внутри блока. */
+  background-size: contain;
+  /* универсальное свойство: */
+  /* Если указываешь в краткой записи фона свойство background-size, то его значения нужно будет записать через слеш /, чтобы отделить его от свойства background-position. */
+  background-color: salmon;
+  background-image: url(/images/catpic.jpg);
+  background-position: bottom right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-attachment: scroll;
+  background: salmon url(/images/catpic.jpg) center left/cover no-repeat;
+  /* при свойстве contain будет вылазить фон элемента при масштабировании*/
+  /* Фон блока элемента может иметь несколько слоев в CSS3. Количество слоев определяется количеством значений, разделенных запятыми, указанных в свойстве background-image 
+	Тогда перечисляются все свойства, и их значения тоже идут через запятую :
+	background-image: url(flower_rose.png), url(love.png), url(border_white.png);
+	background-position: bottom right, center center, top left; */
+}
+
+.img-wrapper img {
+  /* чтобы также издеваться над замещаемыми элементами <img> <input type="image">, <embed>, <iframe>, <video>, <canvas> можно из завернуть в клетку нужной формы и использовать 
+
+	object-fit*/
+  /* fill	Значение по умолчанию. Содержимое замещаемого элемента полностью заполняет область контейнера, т.е. задает родителю размер.
+	contain
+	cover
+	scale-down	Содержимое элемента выбирает из двух значений none и contain то значение, которое даёт меньшие размеры.
+	none	Замещаемое содержимое не изменяет свои собственные размеры, чтобы поместиться и заполнить область контейнера. */
+  /* object-position 
+	
+	задаёт положение содержимого замещаемого элемента внутри контейнера left/center/right top/center/bottom  px / em/ %       */
+}
+
+.bootstrap-testt {
+  padding-top: 40px;
+  background: #fee;
+}
+
+.frame {
+  font-size: 12px;
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid #7c7c7c;
+  border-radius: 4px;
+}
+
+.grider {
+  background-color: #fff;
+  font-size: 10px;
+  text-align: center;
+}
+
+.frame1 {
+  background-color: #cff;
+}
+
+.frame2 {
+  background-color: #fac;
+}
+
+.frame3 {
+  background-color: #bafb7c;
+}
+
+.margin-mix {
+  background-color: #f5e874;
+}
+
+.superButton {
+  margin-top: 15px;
+  position: relative;
+  background-position: left top;
+  width: 25px;
+  height: 34px;
+  /* треть изображения в 100рх*/
+  background-image: url("../images/nav.png");
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  display: inline-block;
+}
+
+.superButton:hover {
+  background-position: left top -34px;
+  /*от топа отнимаем 34*/
+  background-origin: content-box;
+}
+
+/* Псевдоклассы!   ссылка, по которой пользователь ещё не переходил */
+a:link {
+  color: #ff2e90;
+}
+
+/* Псевдоклассы!   посещенная ссылка*/
+/* Псевдоклассы!   по наведению на ссылку*/
+/* Псевдоклассы!  по нажатию. Виден одно мгновение пока грузится страница */
+/* Псевдоэлементы сломали рахметку нахер мне! */
+/* Псевдоэлементы!  по наведению на форму заполнения*/
+input:focus {
+  background: aliceblue;
+  border-color: black;
+}
+
+/* Псевдоэлементы!  по выбору куска текста*/
+p::-moz-selection {
+  background-color: #ff2e90;
+}
+p::selection {
+  background-color: #ff2e90;
+}
+/*# sourceMappingURL=main.css.map */

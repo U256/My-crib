@@ -1,0 +1,137 @@
+h1 {
+	font-weight: 800;
+	border: 2px solid #4b77fc;
+	box-sizing: border-box;
+	border-radius: 30px/20px;
+}
+
+.gradient {
+	display: inline;
+	margin: 10px;
+	padding: 5px 5px 4px 5px;
+	display: inline-block;
+	background-color: aliceblue;
+	font-size: 12px;
+	border: 1px solid #908f8f;
+	transition-property: background-color, font-size, border;
+	/*указывает, что будем анимировать*/
+
+	transition-duration: 2s, 1s, 1s;
+	transition-delay: 0s, 0s, 0.5s;
+	/*срок анимации*/
+
+	&:hover {
+		background-color: rgba(250, 58, 202, 0.36);
+		padding: 5px 5px 4px 5px;
+		font-size: 15px;
+		border: 2px solid black;
+	}
+}
+
+#vkLink {
+	display: inline-block;
+	text-decoration: none;
+	padding: 10px;
+	border: 1px solid #000;
+	line-height: 20px;
+	transition-property: padding;
+	/* название CSS-свойств, к которым будет применен эффект перехода. Значение свойства может содержать как одно свойство, так и список свойств через запятую */
+
+	transition-duration: 1.6s;
+	/*Продолжительность перехода*/
+
+	transition-timing-function: linear;
+	/*формат перехода, их куча, легче гуглить*/
+
+	transition-delay: 0.3s;
+	/*задержка перед переходом*/
+
+	transition: padding 1s linear 0s;
+	/*всё сразу, можно несколько свойств через запятую*/
+
+	&:hover {
+		padding: 10px 18px;
+	}
+}
+
+///////////////////////////tut
+.crying-img {
+	position: absolute;
+	bottom: 0; right: 0;
+	opacity: .7;
+}
+
+
+.img-wrapper {
+	height: 300px;
+	width: 300px;
+	/* тупа цвет */
+	background-color: salmon;
+	color: #fff;
+
+	/* устанавливает фоновое изображение (одно или несколько) */
+	background-image: linear-gradient(white, gray);
+
+	/* repeat (по умолчанию) */
+	background-repeat: repeat-x;
+
+	/* бесполезно почти всегда, иногда нужно fixed для фона */
+	background-attachment: scroll;
+
+
+	/*  %	Горизонтальное смещение вычисляется по формуле ширина области расположения фона — ширина фонового изображения. Вертикальное смещение по формуле высота области расположения фона - высота фонового изображения, где размер изображения — это размер, заданный свойством background-size. Значение по умолчанию 0% 0%. */
+	/* px	Задает фиксированную длину в качестве смещения. */
+	/* left/center/right top/center/bottom  
+	Если определить только одно значение, второе будет 50%. Xpos Ypos Верхний левый угол это 0 0. Любые CSS единицы.*/
+	background-position: 0 10px;
+
+	/*гор-верт*/
+	background-position: bottom 10px right 30px;
+
+	/* окантовка */
+	background-clip: border-box;
+
+	background-origin: border-box;
+
+	/*  %	Задает размер фонового изображения в процентах от ширины или высоты элемента, которое заполняется фоном. */
+	/* cover	Масштабирует изображение с сохранением пропорций так, чтобы его ширина или высота равнялась ширине или высоте блока. */
+	/* contain	Масштабирует изображение с сохранением пропорций таким образом, чтобы оно целиком поместилось внутри блока. */
+	background-size: contain;
+
+	/* универсальное свойство: */
+	/* Если указываешь в краткой записи фона свойство background-size, то его значения нужно будет записать через слеш /, чтобы отделить его от свойства background-position. */
+	background-color: salmon;
+	background-image: url(/images/catpic.jpg);
+	background-position: bottom right;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-origin: border-box;
+	background-clip: border-box;
+	background-attachment: scroll;
+
+	background: salmon url(/images/catpic.jpg) center left/cover no-repeat;
+
+	/* при свойстве contain будет вылазить фон элемента при масштабировании*/
+
+	/* Фон блока элемента может иметь несколько слоев в CSS3. Количество слоев определяется количеством значений, разделенных запятыми, указанных в свойстве background-image 
+	Тогда перечисляются все свойства, и их значения тоже идут через запятую :
+	background-image: url(flower_rose.png), url(love.png), url(border_white.png);
+	background-position: bottom right, center center, top left; */
+
+}
+
+.img-wrapper img {
+	/* чтобы также издеваться над замещаемыми элементами <img> <input type="image">, <embed>, <iframe>, <video>, <canvas> можно из завернуть в клетку нужной формы и использовать 
+
+	object-fit*/
+
+	/* fill	Значение по умолчанию. Содержимое замещаемого элемента полностью заполняет область контейнера, т.е. задает родителю размер.
+	contain
+	cover
+	scale-down	Содержимое элемента выбирает из двух значений none и contain то значение, которое даёт меньшие размеры.
+	none	Замещаемое содержимое не изменяет свои собственные размеры, чтобы поместиться и заполнить область контейнера. */
+
+	/* object-position 
+	
+	задаёт положение содержимого замещаемого элемента внутри контейнера left/center/right top/center/bottom  px / em/ %       */
+}

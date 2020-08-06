@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Таблицы и формы</title>
+    <link rel="shortcut icon"
+        href="https://img.favpng.com/20/20/12/computer-icons-favicon-science-iconfinder-png-favpng-Fsyg7qgB3QwTWmHEThnpi3qza.jpg"
+        type="image/x-icon">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <header>
+        <nav class="header-nav">
+            <ul>
+                <!--unordered list-->
+                <li class="nav"><a href="index.html">Main page</a></li>
+                <li class="nav"><a href="contacts.html">Contacts</a></li>
+                <li class="nav"><a href="AudioVideo.html">Audio'n'video</a></li>
+                <li class="nav">Таблицы и формы</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Таблицы и формы</h1>
+        
+        <table cellpadding="7" cellspacing="0">
+            <colgroup>
+                <col style="background: rgba(118,255,221,0.38)" span="2">
+                <col style="background: #3afadd">
+                <!--тут управляю всем вторым стобцом-->
+                <col>
+            </colgroup>
+        
+            <tr>
+                <th>Заголовок </th>
+                <th>Заголовок2</th>
+                <th>Заголовок3</th>
+            </tr>
+            <tr>
+                <!--table row-->
+                <td>11</td>
+                <td>12</td>
+                <!--table data cell — ячейка с данными таблицы -->
+                <td rowspan="3">rowspan="3" сработал </td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td>22</td>
+                <!--            <td>23</td>-->
+            </tr>
+            <tr>
+                <td colspan="2">опаа colspan="2" соединил</td>
+                <!--            <td>22</td>-->
+                <!--            <td>23</td>-->
+            </tr>
+        </table>
+        
+        <h2>Web-form</h2>
+        
+        <form action="/" method="/">
+            <!-- Действия, которе настраивается для PHP -->
+            <!--    Тег <form> устанавливает форму на веб-странице. Форма предназначена для обмена данными между пользователем и сервером-->
+        
+            <input type="name" name="nameOfPerson" placeholder="подсказка - введи имя">
+            <!-- По этим данным определяется, что делать с введённым-->
+        
+            <input type="password" name="psw" maxlength="22" placeholder="password"> <br>
+            жмяк
+            <input type="checkbox" name="checkbox1" value="значение, которое отправится на сервер когда тыкнут"> <br>
+            <input type="submit" name="submit" value="submit">
+        </form>
+        
+        <!--        <input type="button|checkbox|file|hidden|image|password|radio|reset|submit|text">-->
+
+        <form action="#" method="GET" class="booking__form">
+            <!-- action:
+                    адрес ресурса, где будет обрабатываться введенная форма
+                
+                        method:
+                    GET -передать в браузерную строку в формате [имя параметра] = [назначение параметра]&[следующая][пара]
+                    POST - позволяет передать больше, до 4кб, передача анонимна и не отражается. Например, логин и пароль-->
+        
+            <input type="text" name="guest-name" value=" Name">
+            <!-- type: 
+                        чекбоксы, радио, пароль, емейл и submit! последний - чтоб отправить данные на сервак по методу в action
+        
+                            value: 
+                        значение, которое будет передано на сервер 
+                    
+                            target:
+                        как будут отображены результаты, тут или в новой вкладке. по умолчанию тут -->
+            <input type="email" name="email" value="Email">
+            <input type="date" name="date" value="Date">
+            <input type="time" name="time" value=" Time">
+            <input type="number" name="number-of-persons" value="People">
+            <input type="submit" name="submit" value="Find a table" class="booking-submit">
+        </form>
+
+        <form>
+            Выбери:
+            <label for="1stradio"> 1st </label> <input id="1stradio" type="radio" name="radio">
+            <!--        Ярлык для чего-то. Передаём ему ид кнопки, текст - становится кликабельным -->
+            2nd <input type="radio" name="radio">
+            3rd <input type="radio" name="radio">
+            <!--        если имена радио одинаковые, можно выбрать только один-->
+            <hr>
+            <button type="submit">То же самое, что и submit</button>
+        </form>
+        
+        <form method="get">
+            <!--        get не умеет передавать фото-->
+            <textarea name="textarea" placeholder="textarea" cols="8" rows="2"> </textarea>
+            <br>
+            <select name="selector">
+                <option value="HTML">Хтмл</option>
+                <!--            валуй актуален, когда введен русскей текст, а надо передать корректное значение-->
+                <option>CSS</option>
+                <option>JavaScript</option>
+                <option selected>PHP</option>
+            </select>
+        </form>
+        блаааааблаабалаааа <em>апвыыв</em>
+        
+        
+        <form action="#" method="get">
+            <div>
+                <p>Name</p>
+                <input type="text" name="username" tabindex="1" />
+            </div>
+            <div>
+                <p>Password</p>
+                <input type="password" name="password" tabindex="2" />
+            </div>
+            <div>
+                <p>Phone number</p>
+                <input type="tel" name="userphone" tabindex="3" />
+            </div>
+            <div>
+                <p>Sex</p>
+                <div>
+                    <input type="radio" name="gender" value="male" tabindex="4" /> Male
+                    <input checked type="radio" name="gender" value="female" tabindex="4" /> Female
+                </div>
+            </div>
+            <div>
+                <p>Assets</p>
+                <div>
+                    <input type="checkbox" name="bike" value="yes" tabindex="5" /> Bicycle <br>
+                    <input type="checkbox" name="car" value="yes" tabindex="6" /> Car <br>
+                    <input disabled type="checkbox" name="house" value=yes" tabindex="7" /> House <br>
+                </div>
+            </div>
+            <div>
+                <textarea name="text" tabindex="8"></textarea>
+            </div>
+            <div>
+                <p>Add photo</p>
+                <input type="file" tabindex="9" />
+            </div>
+            <div>
+                <p>Favorite color</p>
+                <select tabindex="10">
+                    <option value="red">Red</option>
+                    <option value="green">Green</option>
+                    <option value="blue">Blue</option>
+                </select>
+            </div>
+            <div>
+                <p>What's next?</p>
+                <button tabindex="11" type="submit">Send</button>
+                <button tabindex="12" type="reset">Reset</button>
+            </div>
+        </form>
+    </main>
+
+</body>
+
+</html>
