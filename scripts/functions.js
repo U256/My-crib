@@ -1,8 +1,8 @@
 'use strict';
 
-let point = 8;
-point.toString; // получить ссылку на метод (свойство, содержащее функцию) без его выполнения
-point.toString(); // выполнить метод toString объекта point
+let eight = 8;
+eight.toString; // получить ссылку на метод (свойство, содержащее функцию) без его выполнения
+eight.toString(); // выполнить метод toString объекта point
 
 // ФУНКЦИЯ - ОБЪЕКТ!
 function DECLARATIONfunction() {
@@ -37,8 +37,8 @@ let welcome = (a < 18) ?
 (function () {
     let i = "что угодно, и не в глобальной области";
     let start = "способ не захламлять глобальные переменные";
-    console.log(i)
-})()   //и тут же () - вызвали
+    start = i;
+})()   //и тут же вызвали
 
 let makeCollectionFunc = () => new Array();
 let combiner = (a, b, c) => {
@@ -57,18 +57,21 @@ funk3(); //undefined
 //this в декларированной функции без контекста будет window, А ПРИ 'use strict' - undefined
 //this будет иметь для такой f смысл, когда на вызвана в контексте объекта:
 // 1) obj.func()      2) new Obj        3) call/apply/bind
+
 let noizy = "loud";
-console.log(funk3.call(noizy)); //loud
+funk3.call(noizy); //"loud" является this 
 //call и apply привязывают контекст и сразу вызывают функцию
 //apply всегда принимает 2 параметра, где второй - массив аргументов
 
-console.log(funk3.bind(noizy)()) //loud
+
+funk3.bind(noizy) //Возвращает Ф, привязанную к noizy
 //bind не вызывает Ф, только привязывает контекст
 
 
 function heyy() {
     console.log("hello", this)
 }
+
 const personBoi = {
     name: "Alexey",
     age: 24,
@@ -92,14 +95,6 @@ const currentBoi = {
 
 let fnCurrentBoiInfo = personBoi.logInfo.bind(currentBoi, 'Backend', 89999);
 console.log(fnCurrentBoiInfo())
-
-//чтобы получить доступ к глобальной переменной при наличии локальной - window.myVar
-//чтобы получить доступ к глобальному контексту при наличии локального - myFunk.bind(window)
-
-//divID.innerHTML - контент с тегами, наприм <p>Text</p>
-//divID.innerContent - просто контент Text
-
-
 
 // ЗАМЫКАНИЯ CLOSURE ЗАМЫКАНИЯ CLOSURE 
 //Замыкания - внутренняя F замкнута на обл видимости родительской F

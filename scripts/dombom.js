@@ -24,5 +24,11 @@ document.getElementById('currentElem').onclick = () => { };
 //document.body.appendChild(info); //установить info потомком док бади
 
 
+//чтобы получить доступ к глобальной переменной при наличии локальной - window.myVar
+//чтобы получить доступ к глобальному контексту при наличии локального - myFunk.bind(window)
+
+//divID.innerHTML - контент с тегами, наприм <p>Text</p>
+//divID.innerContent - просто контент Text
+
 
 
