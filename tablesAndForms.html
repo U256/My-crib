@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Таблицы и формы</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon"
         href="https://img.favpng.com/20/20/12/computer-icons-favicon-science-iconfinder-png-favpng-Fsyg7qgB3QwTWmHEThnpi3qza.jpg"
         type="image/x-icon">
@@ -18,17 +19,23 @@
         <nav class="header-nav">
             <ul>
                 <!--unordered list-->
-                <li class="nav"><a href="index.html">Main page</a></li>
-                <li class="nav"><a href="contacts.html">Contacts</a></li>
-                <li class="nav"><a href="AudioVideo.html">Audio'n'video</a></li>
-                <li class="nav">Таблицы и формы</li>
+                <li class="nav-li"><a href="index.html">Main page</a></li>
+                <li class="nav-li"><a href="stuff.html">Stuff</a></li>
+                <li class="nav-li"><a href="bom-dom.html">BOM & DOM</a></li>
+                <li class="nav-li nav-li_active"><a href="tablesAndForms.html">Таблицы и формы</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <h1>Таблицы и формы</h1>
-        
+
+        <form style="margin-top: 25px;">
+            <input type="search" name="q" placeholder="Search query">
+            <input type="submit" value="Go!">
+        </form>
+        <br>
+
         <table cellpadding="7" cellspacing="0">
             <colgroup>
                 <col style="background: rgba(118,255,221,0.38)" span="2">
@@ -36,46 +43,49 @@
                 <!--тут управляю всем вторым стобцом-->
                 <col>
             </colgroup>
-        
-            <tr>
-                <th>Заголовок </th>
-                <th>Заголовок2</th>
-                <th>Заголовок3</th>
-            </tr>
-            <tr>
-                <!--table row-->
-                <td>11</td>
-                <td>12</td>
-                <!--table data cell — ячейка с данными таблицы -->
-                <td rowspan="3">rowspan="3" сработал </td>
-            </tr>
-            <tr>
-                <td>21</td>
-                <td>22</td>
-                <!--            <td>23</td>-->
-            </tr>
-            <tr>
-                <td colspan="2">опаа colspan="2" соединил</td>
-                <!--            <td>22</td>-->
-                <!--            <td>23</td>-->
-            </tr>
+            <thead>
+                <tr>
+                    <th>Заголовок </th>
+                    <th>Заголовок2</th>
+                    <th>Заголовок3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!--table row-->
+                    <td>11</td>
+                    <td>12</td>
+                    <!--table data cell — ячейка с данными таблицы -->
+                    <td rowspan="3">rowspan="3" сработал </td>
+                </tr>
+                <tr>
+                    <td>21</td>
+                    <td>22</td>
+                    <!--            <td>23</td>-->
+                </tr>
+                <tr>
+                    <td colspan="2">опаа colspan="2" соединил</td>
+                    <!--            <td>22</td>-->
+                    <!--            <td>23</td>-->
+                </tr>
+            </tbody>
         </table>
-        
+
         <h2>Web-form</h2>
-        
+
         <form action="/" method="/">
             <!-- Действия, которе настраивается для PHP -->
             <!--    Тег <form> устанавливает форму на веб-странице. Форма предназначена для обмена данными между пользователем и сервером-->
-        
+
             <input type="name" name="nameOfPerson" placeholder="подсказка - введи имя">
             <!-- По этим данным определяется, что делать с введённым-->
-        
+
             <input type="password" name="psw" maxlength="22" placeholder="password"> <br>
             жмяк
             <input type="checkbox" name="checkbox1" value="значение, которое отправится на сервер когда тыкнут"> <br>
             <input type="submit" name="submit" value="submit">
         </form>
-        
+
         <!--        <input type="button|checkbox|file|hidden|image|password|radio|reset|submit|text">-->
 
         <form action="#" method="GET" class="booking__form">
@@ -85,7 +95,7 @@
                         method:
                     GET -передать в браузерную строку в формате [имя параметра] = [назначение параметра]&[следующая][пара]
                     POST - позволяет передать больше, до 4кб, передача анонимна и не отражается. Например, логин и пароль-->
-        
+
             <input type="text" name="guest-name" value=" Name">
             <!-- type: 
                         чекбоксы, радио, пароль, емейл и submit! последний - чтоб отправить данные на сервак по методу в action
@@ -112,7 +122,7 @@
             <hr>
             <button type="submit">То же самое, что и submit</button>
         </form>
-        
+
         <form method="get">
             <!--        get не умеет передавать фото-->
             <textarea name="textarea" placeholder="textarea" cols="8" rows="2"> </textarea>
@@ -126,8 +136,8 @@
             </select>
         </form>
         блаааааблаабалаааа <em>апвыыв</em>
-        
-        
+
+
         <form action="#" method="get">
             <div>
                 <p>Name</p>

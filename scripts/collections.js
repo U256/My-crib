@@ -83,3 +83,26 @@ switch (swither) {
     //let foo; - Выброс SyntaxError из-за повторного объявления переменной, тут var подойдёт
     break;
 }
+
+//чтобы сравнить цифры нормально, а не по первому числу, функця:
+function compareNumbers(n1, n2) {
+  if (n1 == n2) return 0;
+  if (n1 > n2)
+    return 1;
+  else
+    return -1;
+}
+arr3.sort(compareNumbers);
+
+
+
+
+//Объект Map (ассоциативный массив)
+var arr5 = new Map([
+  ['key1', 'value1'],
+  ['key2', 'value2'],
+  ['key3', 'value3']
+]);
+arr5.forEach(function (value, key) { //или for of
+   key + ' - value = ' + value; // key1 - value = value1 итд
+});

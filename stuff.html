@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Всячина</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon"
+        href="https://img.favpng.com/20/20/12/computer-icons-favicon-science-iconfinder-png-favpng-Fsyg7qgB3QwTWmHEThnpi3qza.jpg"
+        type="image/x-icon">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="header-nav">
+            <ul>
+                <!--unordered list-->
+                <li class="nav-li"><a href="index.html">Main page</a></li>
+                <li class="nav-li nav-li_active"><a href="stuff.html">Stuff</a></li>
+                <li class="nav-li"><a href="bom-dom.html">BOM & DOM</a></li>
+                <li class="nav-li"><a href="tablesAndForms.html">Таблицы и формы</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!-- Стандартная дата -->
+        <p><time datetime="2020-01-20">20 Января 2020</time></p>
+        <!-- Только год и месяц -->
+        <p><time datetime="2020-01">Январь 2020</time></p>
+        <!-- Только месяц и день -->
+        <p><time datetime="01-20">20 Января</time></p>
+        <!-- Только время, часы и минуты -->
+        <p><time datetime="19:30">19:30</time></p>
+        <!-- Также вы можете отобразить секунды и миллисекунды! -->
+        <p><time datetime="19:30:01.856">19:30:01.856</time></p>
+        <!-- Дата и время -->
+        <p><time datetime="2020-01-20T19:30">7.30pm, 20 Января 2020</time></p>
+        <!-- Дата и время со смещением по часовому поясу -->
+        <p><time datetime="2020-01-20T19:30+01:00">7.30pm, 20 Января 2020, — это 8.30pm во Франции.</time></p>
+        <!-- Вызов номера недели -->
+        <p><time datetime="2020-W04">Четвертая неделя 2020</time></p>
+
+        <audio controls>
+            <source src="Touch.mp3" type="audio/mp3">
+        </audio>
+
+        <iframe src="https://vk.com/video_ext.php?oid=-109125388&id=456245812&hash=0a0fa8af2befece9" width="640"
+            height="360" frameborder="2" allowfullscreen>
+        </iframe>
+        <!-- внедрение куска чужой веб-страницы -->
+
+        <video controls width="200" height="200">
+            <source src="rabbit320.mp4" type="video/mp4">
+            <source src="rabbit320.webm" type="video/webm">
+            <p>Ваш браузер не подддерживает HTML5 видео. Вот <a href="vk.com">ссылка на видео</a> взамен.</p>
+        </video>
+
+        <div>
+            супер кнопка без css, лучшая в жизни:
+            <a href="index.html"><span class="superButton"></span></a>
+        </div>
+
+        <address>
+            <p>Автор страницы — <a href="https://www.youtube.com/watch?v=RxxTQRGv4V8">Вот</a>.</p>
+        </address>
+
+        <!--unordered list, есть ol-->
+        <p>за мат <abbr title="или нет">извени</abbr> </p>
+    </main>
+    <!-- 
+        В HTML символы <, >, ", ' и & являются специальными символами. Они часть HTML синтаксиса
+        сами по себе. Чтобы просто ипользовать эти символы есть ссылки-мнемоники  — специальные коды,
+        которые отображают спецсимволы, и могут быть использованы в точных позициях.
+        Каждая ссылка-мнемоник начинается с ампресанда (&), и завершается точкой с запятой (;).
+
+        Буквенный символ	Символьный эквивалент
+        <	                 &lt;
+        >	                 &gt;
+        "	                 &quot;
+        '	                 &apos;
+        &	                 &amp;
+     -->
+</body>
+
+</html>

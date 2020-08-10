@@ -28,6 +28,7 @@ let sum = function (a, b) {
     return a + b;
 } // УКОРОЧЕНО со стрелочными функциями:
 let sum1 = (a, b) => a + b; // если выражение в одну строчку, return перед ним можно не ставить
+//Стрелочные функции НЕ сохраняют контекст!!!
 
 let welcome = (a < 18) ?
     () => 'Привет' :
@@ -94,7 +95,7 @@ const currentBoi = {
 }
 
 let fnCurrentBoiInfo = personBoi.logInfo.bind(currentBoi, 'Backend', 89999);
-console.log(fnCurrentBoiInfo())
+console.log(fnCurrentBoiInfo()) // это тоже замыкание
 
 // ЗАМЫКАНИЯ CLOSURE ЗАМЫКАНИЯ CLOSURE 
 //Замыкания - внутренняя F замкнута на обл видимости родительской F
@@ -104,10 +105,10 @@ function externaClosurelFn(externArg) {
         return externArg + internalArg;
     }
 }
-let internaClosurelFn = externaClosurelFn(99);
+let internaClosurelFn = externaClosurelFn(1);
 
-internaClosurelFn(1); //100 эта функция замкнута в родительской, в которой единица
-internaClosurelFn(101); //200 замкнуло значение 1 в себе и всегда его использует
+internaClosurelFn(99); //100 эта функция замкнута в родительской, в которой единица
+internaClosurelFn(199); //200 замкнуло значение 1 в себе и всегда его использует
 
 function urlGenerator(domain) {
     return function (url) {

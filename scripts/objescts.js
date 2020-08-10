@@ -80,14 +80,14 @@ let stringFromNum = +"5"; //5 как число
 let elemX, elemY;
 elemX %= elemY; // x= x%y
 
-
 //унарный оператор - работает с 1 переменной. Наприм инкремент
 //бинарный - с двумя. 2+2; int1 = int2
 //тернарный - с тремя. isTrue? funcA() : funcB();
 
 let fruit1 = 'apple';
 let baggg = {
-    [fruit1 + 'Computers']: 5 //fruit - вычисляемое свойство
+    [fruit1 + 'Computers']: 5, //fruit - вычисляемое свойство
+    svoistvo: 5,
 }; // baggg.appleComputers = 5
 
 
@@ -103,26 +103,62 @@ let baggg = {
 
 // 1 литерал. Внутри исполняется new Object ({....})
 var point0 = {
-    x: 40,
-    y: 60,
+    __proto__: baggg, //получили родителем оъектик baggg
+
+    _secretVal: 'скрытое свойство',  // _ означает защищенное свойство
+
     toString() { //эквивалентно toString: function (){}
-        return 'x = ' + x + '; y = ' + y;
+        return 'x is ' + x + '; y is ' + y;
+    },
+    // x: 40,
+    // y: 60, можно их не задавать явно, а обернуть в get и set
+    get coordinates() { // get и set - интерфейсы обращения к свойству
+        return `x = ${this.x}, y = ${this.y}`;
+    },
+    set coordinates(valuesArr) {
+        this.x = valuesArr[0];
+        this.y = valuesArr[1];
     },
     //висячая запятая, чтобы удобнее было добавлять свойства
-}
+
+    //при этом в классе нет свойств x и y, значит, к ним нет прямого доступа
+};
+
 point0['z'] = 35;// добавление свойства
 delete point0.z; // Удаление свойства 
 'z' in point0; // false, z - undefined
+
+Object.defineProperty(point0, '_secretVal', { //изменим дескрипторы свойства
+    enumerable: false, // не перечисляется в for in
+    configurable: false, // не удаляется и не переназначается
+    writable: false, // не перезаписывается
+});
+
+Object.defineProperty(point0, 'newVal', { // создадим новое св-во
+    newVal: 'У свойства, заданного так, по умолчанию 3 false как у примера выше'
+});
+
+point0.coordinates = [1, 2]; //setter
+point0.coordinates; //x = 1, y = 2 Без скобок getter
+
 
 
 
 
 //2 функция-конструктор new Object(). Он с БОЛЬШОЙ буквы! Возвращает this
-function Point2D(x, y) {
+function Point2D(x, y = 0) { // на случай если не укажут 2 аргумент
     this.x = x;
     this.y = y;
 }
+// При создании объектов с помощью new, JavaScript добавляет к функции свойство prototype.
+
+Point2D.prototype;
+// { constructor: ƒ }
+// constructor: ƒ Point2D(x, y = 0)
+// __proto__: Object
+
 let point1 = new Point2D(1, -2); //у конструктора this - создаваемый объект
+
 typeof Point2D; // function Это именно ФуНкЦиЯ-конструктор
 typeof point1; //object
 point1 instanceof Point2D; //true
@@ -130,10 +166,11 @@ point1 instanceof Point2D; //true
 
 
 
+
 // 3 Object.create 
 let objWithNoProto = Object.create(null);//тогда вообще род класса не будет
 
-let point2 = Object.create( Point2D.prototype,
+let point2 = Object.create(Point2D.prototype,
     //первый параметр - объект-прототип. Если не указан, оставить {},
 
     { //вторым параметром объект, в котором поля для создаваемого объекта
@@ -153,34 +190,30 @@ let point2 = Object.create( Point2D.prototype,
             get() {
                 return new Date().getFullYear() - this.y;
             },
-            set(value) { // переделать
-                this.age = value*2
-            },
         },
+
     }
 );
-
+point2.status = 'working'; // добавили свойсто стандартно
 console.log(point2);
 
 
 
 
-/* 4 Создание объектов посредством ключевого слова CLASS
-Классы в JavaScript в ECMAScript 2015(ES6)
+/* 4 Создание объектов посредством ключевого слова CLASS (ECMAScript 2015)
 При создании класса аргументы использует constructor при создании объекта.
 Ключевое слово this в классе указывает на создаваемый объект
 В JavaScript нет классов, которые есть в языках с класс-ориентированным
 подходом (С++, PHP, C# и др.).
-В JavaScript класс - это чисто условное понятие, под которым понимают прототип,
+Тут класс - это чисто условное понятие, под которым понимают прототип,
 свойства которого наследуется одним или множеством объектов. */
 
 
 class Animal {
-
     static type = "Animal";
     //к стат переменным в JS обращение только от класса! Animal.type
 
-    constructor(options) {
+    constructor(options) { // options - объект в данном случае
         this.name = options.name
         this.age = options.age
         this.hasTail = options.hasTail
@@ -190,6 +223,11 @@ class Animal {
         console.log('heh')
     }
 }
+const justAnimal = new Animal({
+    name: 'anim',
+    age: 6,
+    hasTail: false,
+});
 
 class Cat extends Animal {  //Cat > Animal > Object
 
@@ -214,36 +252,39 @@ const catLion = new Cat({
     hasTail: true,
 });
 
-console.log(catLion.voice()); // выдаст meow и undefined, т.к. метод ничего не возвращаеь
+typeof Cat // function
+catLion instanceof Animal //true
 
 
 
 
 //////////////PROTOTYPES PROTOTYPES PROTOTYPES
+
+Object.getPrototypeOf(Object.prototype); // null
+console.log(Object.prototype.constructor);
+// null
+
+Cat.prototype;
+// { constructor: ƒ, voice: ƒ }
+// constructor: class Animal
+// voice: ƒ voice()
+
+Cat.prototype.constructor; // просто весь класс Animal 
+
 // можно впринипе задать:
 //Point2D.prototype = Object;
 // это значит, что при создании объекта new Point2D, ему будет задан __proto__ = Object
+// уже заданный конструктор будет перезаписан
+// Без вызова оператора new, оно вообще ничего не делает, его единственное назначение – указывать __proto__ для новых объектов.
 // Свойство prototype имеет смысл только у конструктора
-// Свойство с именем prototype можно указать на любом объекте, но особый смысл оно имеет, лишь если назначено функции - конструктору.
+// Значением prototype должен быть только Объект
 
-
-// Само по себе, без вызова оператора new, оно вообще ничего не делает, его единственное назначение – указывать __proto__ для новых объектов.
-//Значением prototype должен быть только объект
-console.group("Свёрнуто в группу:")
-
-Object.getPrototypeOf(Object.prototype); // null
-Object.prototype.__proto__; // null
-CarOne.prototype.size = "big"; // Присвоили size ObjectOne
-console.log("size" in objectOne); // true   key IN obj - проверка на наличие
-console.log(objectTwo.size);
-
-let objectThree = new ObjectOne();
-// При создании объектов с помощью функции - конструктора new, JavaScript добавляет к функции свойство prototype
-
-console.groupEnd()
+Cat.prototype.size = "big"; // Присвоили size классу Animal 
+console.log("size" in justAnimal); // true   key IN obj - проверка на наличие
+console.log(catLion);
 
 //Object.assign(obj1, obj2) объединит св-ва в obj1. Совпадающие свойства перезапишутся из 2
-let clonedObj = Object.assign({}, objectOne);
+let clonedAnimal = Object.assign({}, justAnimal);
 
 Array.prototype.newFunction4AllArrays = function (n) {
     return this.map(function (i) {
@@ -253,6 +294,10 @@ Array.prototype.newFunction4AllArrays = function (n) {
 let simplArr = [1, 2, 3];
 simplArr.newFunction4AllArrays(20); //20, 40, 60
 
+//Свойство constructor - содержит ссылку на конструктор, которым объект был создан
+[].constructor; //Array;
+({}).constructor; //Object;
+Object.prototype.constructor; //Objecrt
 
 null;
 //↑↑ __proto__ - ссылка
