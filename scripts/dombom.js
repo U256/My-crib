@@ -1,3 +1,4 @@
+'use strict'
 let bom = 'Browser Object Model';
 let googLink = 'http://google.com/';
 let indexWindow = "найди способ присовить другую страницу сюда"
@@ -18,7 +19,6 @@ function openWindow() {
 function closeWindow() { window.close() } // просто закроет 
 function focusOnWindow() { window.focus() }
 function printThisPage() { window.print() }
-function setFocus() { window.focus() }
 function blurFocus() { window.blur() } //все не имеют параметров
 window.opener; // окно, откуда перешли с помощью метода open()
 window.closed; // ? - false
@@ -123,6 +123,8 @@ document.nodeType // - для определения номера типа
 //nodeValue // для текстового узла. Возвр значение
 
 let nodeP = document.getElementById('strongLove')
+console.log(nodeP);
+
 if (nodeP != null) {
 
     // C:\Users\Admin\Desktop\OpenServer\domains\My-crib\images\javascript-dom-relations.png
@@ -137,10 +139,14 @@ if (nodeP != null) {
     nodeP.nextSibling // +previousSibling следующ элемент  
     nodeP.nextElementSibling // +previouslementSibling следующий соседний узел - элемент  В данном случае это фрейм бутстрапа
     var doesMatch = nodeP.matches('#strongLove'); //true!
+    nodeP.textContent //текстовый контент узла и всех его потомков любой вложенности. Или поменять
+    // >>> I LOVE JS
+    nodeP.innerHTML // >>> I <strong>LOVE</strong> JS
+    nodeP.outerHTML // c внешними тегами! >>> "<p id="strongLove"> I <strong>LOVE</strong> JS  </p>"
 }
 
-let elemToChange = document.getElementById("currentElem"); //img
-let elemToChangeToo = document.querySelector("#currentElem");
+let elemToChange = document.getElementById("elemToChangeHTML"); //img
+let elemToChangeToo = document.querySelector("#elemToChangeHTML");
 let qSel = document.querySelectorAll(".nav-li") // возвращает массив Nodeist
 console.log(qSel);
 var anchors = document.querySelectorAll('ul li a'); // можно искать так
@@ -149,9 +155,7 @@ var firstAnchor = document.querySelectorAll('ul li a'); // только перв
 // Это позволяет перезаписать коллекцию в переменную если она была изменена. Просто вызываем getElementsBy* после изменений и присваиваем куда надо
 
 //querySelector, querySelectorAll, getElementsByTagName, getElementsByClassName позволяют
-//искать не только в документе, но и во внутреннем элементе
-
-
+//искать не только в document, но и в конкр элементе
 
 // При создании страницы браузер получает HTML и стоит DOM. При этом атрибуты элементов переводятся в соответствующие DOM-свойства. Не всегда интерпретируя идентично тому, что дали
 // например, атрибут href и DOM-свойство href содержат разные значения. При выставлении чекбокса атрибут не проставится, а свойство - да
@@ -169,40 +173,90 @@ elemToChange.newProperty = "useles property"
 elemToChange.classList; // массив DOMTokenList с классами. К нему применяется ADD TOGGLE REMOVE
 elemToChange.style // возвращает CSSStyleDeclaration, а уже в style можно получать и изменять CSS
 
-
+//создание, изменение, удаление и вставка элементов
 let newBtn = document.createElement("button")
 document.createTextNode('blabla')
 // к ним применяются appendChild(), removeChild(), node.replaceChild(newnode,oldnode), cloneNode()
 
-nodeP.textContent //текстовый контент узла и всех его потомков любой вложенности. Или поменять
-// >>> I LOVE JS
-nodeP.innerHTML // >>> I <strong>LOVE</strong> JS
-nodeP.outerHTML // c внешними тегами! >>> "<p id="strongLove"> I <strong>LOVE</strong> JS  </p>"
 
 
-//EVENTS:
-let isClassAdded = elemToChange.classList.toggle('hero'); //add, remove and toggle (switcher)
+//EVENTS EVENTS EVENTS EVENTS:
+let mouseEvents = ['mousedown', 'mouseup', 'click', 'dblclick', 'mouseout -> выход из области', 'mouseenter -> вход', 'mouseleave -> как out но не всплывает'];
+
+let keyboardEvents = ['keydown', 'keyup', 'keypress -> down+up'];
+
+let frameEvents = ['error -> не грузит фрейм', 'load', 'pageshow -> как load но сработает даже при загр из кэша', 'scroll -> если фрейм крутится'];
+
+let elementEvents = ['focus', 'blur', 'focusin -> не всплывает', 'search -> (input type="search")', 'submit -> перед отправкой формы на сервер'];
+
+let dragEvents = ['dragstart ', 'drag', 'dragend', 'dragenter -> в области drop target', 'dragleave', 'drop'];
+
+let animEvents = ['animationstart', 'animationend', 'animationiteration -> повторная анимация'];
+
+let bufferEvents = ['сopy', 'cut', 'paste'];
+
+let printEvents = ['beforeprint', 'afterprint'];
+
+let serverEvents = ['error', 'open -> соединение открыто', 'message'];
+//Объект event события message:
+// data - содержит сообщение.
+// origin - URL документа, который вызвал событие.
+// lastEventId - идентификатор (id) последнего полученного сообщения.
+
+let mediaEvents = ['abort -> остановка загрузки', 'loadstart', 'loadedmetadata -> мета, после загрузки', 'loadeddata -> 1 кадр загружен', 'ended -> воспроизведено', 'pause', 'play', 'playing', 'seeked -> новая временная позиция', 'volumechange']
+
+// Передать событие способы:
+// 1 onklick = 'function1()' - атрибут в html // НЕ РЕКОМЕНДУЕТСЯ т.к. непонятно где, не даёт this и event 
+// 2 elem.onclick = function1 // НЕ РАБОТАЕТ до объявления!
+// 3 elem.addEventListener('eventName', function1, true) // РЕКОМЕНДУЕТСЯ
+// третий параметр говорит где сработать, на погружении (true) или всплытии события. По умолч false
+
+
+// BUBBLE - ВСПЛЫТИЕ 
+// Фазы события: События погружаются до нужного элемента, а потом возвращаются (всплывают) до браузера
+// Это значит, что клик по кнопке означает одновременный клик по всем родителям вплоть до HTML
+elemToChange.addEventListener("click", function (event) { // Тыкни на шрека
+
+    event.preventDefault() // отмена стандартного действия
+    // аналог - return false
+
+    //EVENT EVENT EVENT -  элемент, который вызвал обработчик события
+    console.log('event:');
+    console.log(event);// MouseEvent {свойства}
+    event.type // "click"
+    event.bubbles; // может ли всплывать
+    event.screenX // screenY положение элемента
+    // altKey, ctrlKey, metaKey, shiftKey - была ли нажата эта кнопка
+    console.log('event.target:');
+    console.log(event.target);
+    console.log('this:');
+    console.log(this); // объект, на ктором произошло событие. 
+});
+
+document.onclick = function (event) {
+    console.log('тыкнул по:');
+    console.log(event.target); // покажет конкретно, куда нажал
+
+    if (event.target.className == "p2") {
+        alert("Слушали документ, а работа с параграфом! Чудеса")
+    }
+    // this - конкретный объект, даже если выбран весь класс
+    // благодаря концепции всплытия можно слушать целый блок, а взаимодействовать с его элементом!
+
+    // если на внешний блок тоже навешено какое-то действие и оно критическое (наприм, скрыть блок вместе с детьми), а при клике на внутренний элем мы "зацепить" это действие не хотим, то можно остановить всплытие event.stopPropagation()
+}
+
+
+//Правильно работать с событиями надо когда вся страница загрузилась. Вызываем нашу функцию pageInit
+document.addEventListener("DOMContentLoaded", function () {
+    //подписываемся на события
+});
+
+let isHeroClassStay = elemToChange.classList.toggle('hero'); //add, remove and toggle (switcher)
 //toggle returns true if class was added and false if removed
 elemToChange.classList.remove('hero');
-
-elemToChange.addEventListener("click", function (e) {
-    elemToChange.classList.toggle('newClass');
-});
-//e - событие. У него куча полей и функицй ДОПОЛНИТЬ
-// this - конкретный объект, даже если выбран весь класс
-
-//более старая форма. Отличается тем, что не работает до объявл:
-document.getElementById('currentElem').onclick = () => { };
-// вообще это значит window.document.. но тк мы работаем с данным окном, это не ставится
-//также и alert по идее имеет window.alert
-
-//document.body.appendChild(info); //установить info потомком док бади
+//isHeroClassStay не изменится!
 
 
 //чтобы получить доступ к глобальной переменной при наличии локальной - window.myVar
 //чтобы получить доступ к глобальному контексту при наличии локального - myFunk.bind(window)
-
-//divID.innerHTML - контент с тегами, наприм <p>Text</p>
-//divID.innerContent - просто контент Text
-//
-//Фазы события: События погружаются до нужного элемента, а потом возвращаются до браузера

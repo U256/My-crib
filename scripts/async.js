@@ -2,19 +2,50 @@
 //callpack
 //Event loop
 function afterTimeoutFn() {
-	console.log("After 2 sec")
-} // это асинхронная функция, выполнится когда придёт таймер. Остальной код её не ждёт
+	let yaPrisvoilsa = "After 2 sec"
+}
 
-setTimeout(afterTimeoutFn, 2000)  //из браузерного API функция. вызывается у window
+window.setTimeout(afterTimeoutFn, 2000) // это асинхронная функция из браузерного API, выполнится когда придёт таймер. Остальной код её не ждёт
 //она закидывается в call stack, там он регистрирует функцию afterTimeoutFn и выкидывает таймаут из
 //стека, а функция ждёт [таймера или действия => callback queue очередь => закид в стек, выполняется]
 
 //Например, click listener при нажатии кучу раз по кнопке добавит нужное кол-во своих действий в call stack, они выполнятся по очереди
-console.log("before timeout")
 
 setTimeout(() => {
-	let pokaifu = 'kaif';
-}, 0) //выполнится сразу после синхронных операций
+	console.log("выполнится сразу после синхронных операций")
+}, 0)
+
+setInterval(() => {
+	let bruh = 'bruh'; // каждые 10 сек
+}, 1000 * 10)
+
+
+// AJAX AJAX AJAX
+// получаем данные со страницы или формы -> Запрос XMLHttpRequest -> Ответ -> Отображение результатов
+
+// метод GET - запрос в составе URL
+// метод POST - запрос в теле HTTP 
+
+
+var request1 = new XMLHttpRequest();
+let ajaxInitButton = document.querySelector('.ajax-init');
+ajaxInitButton.addEventListener('click', e => {
+	request1.open('GET', 'data-fake.txt', true) //data - в этой же папке
+	// false - синхронный. синхр ajax заморозит всю страницу до получения ответа, устарел
+	// По правилу ограничения домена(Same Origin Policy), нельзя запрашивать данные источников, у которых домен, протокол и порт не соответствуют моему.
+	request1.send();
+	request1.status; //200 - кайф, другие цифры - ошибка
+	request1.responseText // ответ!!!!
+	if (request1.status == 200) {
+		document.getElementById("answer").innerHTML = request1.responseText;
+	}
+});
+
+
+
+
+
+
 
 
 //Promise - обертка над асинхронностью, добавляет удобства и функционала
@@ -29,13 +60,12 @@ setTimeout(() => {
 	}, 200)
 }, 200)
 // чтобы этой вложенности избежать, есть промисы. Аналог:
-
 const prom = new Promise((resolve, reject) => {
 	//сюда асинх код
 	setTimeout(() => {
 		let firstPartOfWork = "Waiting for some server data or event.";
 		if (firstPartOfWork == undefined) {
-			reject() //промис не удался
+			reject() //промис не удался, catch поймает
 		}
 
 		resolve(firstPartOfWork); // это значит, что промис успешно выполнен
