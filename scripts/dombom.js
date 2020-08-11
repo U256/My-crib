@@ -123,19 +123,21 @@ document.nodeType // - для определения номера типа
 //nodeValue // для текстового узла. Возвр значение
 
 let nodeP = document.getElementById('strongLove')
-// C:\Users\Admin\Desktop\OpenServer\domains\My-crib\images\javascript-dom-relations.png
-// наведи на картинку выше и получишь план-капкан
-nodeP.childNodes[0]; //1 дочерний узел (ребёнок) #text "I "  +можно обратиться firstChild
-nodeP.childNodes[1]; //2 дочерний узел (ребёнок) strong остальные ему сиблинги
-nodeP.childNodes[2]; //3 дочерний узел( ребёнок) #text " JAVASCRIPT" +можно обратиться lastChild
-nodeP.parentNode; // весь html родителя
-nodeP.parentElement // - родительский узел-элемент
-nodeP.children // - возвращает коллекцию дочерних элементов(детей). Не включая текст
-nodeP.firstElementChild // +lastElementChild возвращает первый дочерний узел-элемент 
-nodeP.nextSibling // +previousSibling следующ элемент  
-nodeP.nextElementSibling // +previouslementSibling следующий соседний узел - элемент  В данном случае это фрейм бутстрапа
+if (nodeP != null) {
 
-var doesMatch = nodeP.matches('#strongLove'); //true!
+    // C:\Users\Admin\Desktop\OpenServer\domains\My-crib\images\javascript-dom-relations.png
+    // наведи на картинку выше и получишь план-капкан
+    nodeP.childNodes[0]; //1 дочерний узел (ребёнок) #text "I "  +можно обратиться firstChild
+    nodeP.childNodes[1]; //2 дочерний узел (ребёнок) strong остальные ему сиблинги
+    nodeP.childNodes[2]; //3 дочерний узел( ребёнок) #text " JAVASCRIPT" +можно обратиться lastChild
+    nodeP.parentNode; // весь html родителя
+    nodeP.parentElement // - родительский узел-элемент
+    nodeP.children // - возвращает коллекцию дочерних элементов(детей). Не включая текст
+    nodeP.firstElementChild // +lastElementChild возвращает первый дочерний узел-элемент 
+    nodeP.nextSibling // +previousSibling следующ элемент  
+    nodeP.nextElementSibling // +previouslementSibling следующий соседний узел - элемент  В данном случае это фрейм бутстрапа
+    var doesMatch = nodeP.matches('#strongLove'); //true!
+}
 
 let elemToChange = document.getElementById("currentElem"); //img
 let elemToChangeToo = document.querySelector("#currentElem");
@@ -156,7 +158,7 @@ var firstAnchor = document.querySelectorAll('ul li a'); // только перв
 elemToChange.attributes;
 elemToChange.getAttribute('src'); //значение. Атрибут - всегда строка
 elemToChange.hasAttribute('src'); //true Также есть setAttribute и removeAttribute НЕЖЕЛАТЕЛЬНО!
-// 'class' синхронизируется, так что можно даже так его менять:
+// 'class' и 'className' синхронизируется, так что можно даже так его менять:
 elemToChange.setAttribute('class', 'alert-warning'); //Изменили 1 раз
 
 elemToChange.id; // свойство - не обязательно строка!
@@ -167,6 +169,15 @@ elemToChange.newProperty = "useles property"
 elemToChange.classList; // массив DOMTokenList с классами. К нему применяется ADD TOGGLE REMOVE
 elemToChange.style // возвращает CSSStyleDeclaration, а уже в style можно получать и изменять CSS
 
+
+let newBtn = document.createElement("button")
+document.createTextNode('blabla')
+// к ним применяются appendChild(), removeChild(), node.replaceChild(newnode,oldnode), cloneNode()
+
+nodeP.textContent //текстовый контент узла и всех его потомков любой вложенности. Или поменять
+// >>> I LOVE JS
+nodeP.innerHTML // >>> I <strong>LOVE</strong> JS
+nodeP.outerHTML // c внешними тегами! >>> "<p id="strongLove"> I <strong>LOVE</strong> JS  </p>"
 
 
 //EVENTS:
