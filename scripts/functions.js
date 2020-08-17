@@ -16,24 +16,23 @@ let privetFromFunction = DECLARATIONfunction();
 
 let EXPRESSIONfunction = function () {
     let beef = new Object();
-}; // точка с запятой! Это не блок, а выражение с присваиванием функции
-// функциональное выражение
+    // обект будет создан только при вызове F и доступен только в ней
+}; // Это не блок, а выражение с присваиванием функции
+// функциональное выражение 
 // Делает функцию - переменой. Подходит для if-else, чтобы 
 // объявить и использовать только в нужном случае
 
-// Также существуют АНОНИМНЫЕ функции
+// + анонимные функции
 
-
-let sum = function (a, b) {
+let sum1 = function (a, b) {
     return a + b;
 } // УКОРОЧЕНО со стрелочными функциями:
-let sum1 = (a, b) => a + b; // если выражение в одну строчку, return перед ним можно не ставить
+let sum2 = (a, b) => a + b; // если выражение в одну строчку, return перед ним можно не ставить
 //Стрелочные функции НЕ сохраняют контекст!!!
 
 let welcome = (a < 18) ?
     () => 'Привет' :
     () => "Здравствуйте!"; //тернарный оператор со стрел функциями
-
 
 (function () {
     let i = "что угодно, и не в глобальной области";
@@ -60,7 +59,7 @@ funk3(); //undefined
 // 1) obj.func()      2) new Obj        3) call/apply/bind
 
 let noizy = "loud";
-funk3.call(noizy); //"loud" является this 
+funk3.call(noizy); //"loud". noizy - this 
 //call и apply привязывают контекст и сразу вызывают функцию
 //apply всегда принимает 2 параметра, где второй - массив аргументов
 
@@ -79,24 +78,18 @@ const personBoi = {
     sayHello: heyy,
     sayHelloInWindowContext: heyy.bind(document),
     logInfo: function (job, phone) {
-        console.group(`${this.name} info:`)
-        console.log(`Name is ${this.name}`);
-        console.log(`Age is ${this.age}`);
+        let whoseIs = `${this.name} info:`; //George info:
+        this.name; //George
+        this.age; //28
         if (job != undefined) {
-            console.log(`Job is ${job}`);
+            let jobb = `Job is ${job}`;
         }
-        console.log(`Phone is ${phone}`);
-        console.groupEnd();
     }
 }
 const currentBoi = {
     name: "George",
     age: 28,
 }
-
-let fnCurrentBoiInfo = personBoi.logInfo.bind(currentBoi, 'Backend', 89999);
-console.log(fnCurrentBoiInfo()) // это тоже замыкание
-
 // ЗАМЫКАНИЯ CLOSURE ЗАМЫКАНИЯ CLOSURE 
 //Замыкания - внутренняя F замкнута на обл видимости родительской F
 
@@ -117,3 +110,5 @@ function urlGenerator(domain) {
 }
 const comUrl = urlGenerator('com')
 comUrl('google') // https://google.com
+
+

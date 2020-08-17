@@ -23,6 +23,10 @@ arr3.forEach(function (item, index, array) {
   `${item} имеет позицию ${index} в ${array}`;
 });
 
+const arr3Map = arr3.map(person => { // преобразует массив в новый формат  
+  return person;  // их можно как угодно тут изменить. Оперировать объектом и изменять его, использовать поля у объекта  
+})
+
 let arr4 = [1, 0, false];
 arr4.indexOf(0); // 1
 arr4.indexOf(false); // 2
@@ -47,11 +51,6 @@ for (let value of iterable11) {//of
   value; //11 21 31
 }
 /*Цикл for..of использует итератор. Не предоставляет доступа к номеру текущего элемента, только к его значению, но в большинстве случаев этого достаточно.А также это короче.*/
-
-//////////////////////////
-///////////////////
-Symbol.iterator // ДОПОЛНИ
-/////////////
 
 
 for (let entry of iterableM) {
@@ -96,14 +95,121 @@ function compareNumbers(n1, n2) {
 arr3.sort(compareNumbers);
 
 
+const standarObj = {
+  name: "Olesha",
+  age: 24,
+  job: 'frontend',
+}
+const standarArr = [
+  ['name', "Olesha"],
+  ['age', 24],
+  ['job', 'frontend'],
+]
+Object.entries(standarObj); // привели обект к массиву
+Object.fromEntries(standarArr); // массив к объекту
 
 
-//Объект Map (ассоциативный массив)
-var arr5 = new Map([
+
+///////////////////
+Symbol.iterator // ДОПОЛНИ
+/////////////
+
+//Объект MAP Map Map Map Map Map Map Map(ассоциативный массив)
+// схожа с объектом, но мэпа имеет свои методы и ключом может быть объект
+var arrMap = new Map([
   ['key1', 'value1'],
   ['key2', 'value2'],
   ['key3', 'value3']
 ]);
-arr5.forEach(function (value, key) { //или for of
-   key + ' - value = ' + value; // key1 - value = value1 итд
+// конечно работает FOR OF - установлен итератор
+arrMap.get('key'); // в обычном массиве просто по индексу, а тут - гет
+arrMap
+  .set(standarObj, 42) // объект - ключ!
+  .set(arr3[3], 42) // ячейка из другого массива - ключ
+
+let isKeyDeleted = arrMap.delete('key3')
+arrMap; //Map(4) {"key1" => "value1", "key2" => "value2", {…} => 42, "Давай" => 42}
+
+
+for (let val of arrMap.values()) { // также есть keys()
+  val; //value1 value2 etc
+}
+
+arrMap.forEach(function (value, key) { //или for of
+  key + ' - value = ' + value; // key1 - value = value1 итд
 });
+
+// WEAKMAP WEAKMAP WEAKMAP WEAKMAP WEAKMAP WEAKMAP
+// нужен для ключей-объектов. В обычном map, при удалении объекта, это поле захламляет память. А тут удаляется
+const arrWeakMap = new WeakMap([
+  [standarObj, 'value1'] // ключи - только объекты!
+])
+// get set delete has - только эти методы имеются и всё
+//  при удалении ключа-объекта стирается это поле викмэпы
+
+
+// SET SET SET SET SET SET SET
+const arrSet = new Set([1, 1, 3, 5, 6, 6, 1, 3]) // удаляет дубликаты 
+// в ней values=keys!
+arrSet.add(10)
+arrSet; // {1, 3, 5, 6, 10}
+
+function trimDuplicatesFromArray(array) {
+  return [...new Set(array)]
+  // аналог Array.from(new Set(array))
+}
+const trimmedArr = trimDuplicatesFromArray(arrSet); // [1, 3, 5, 6, 10]
+
+console.log(trimmedArr);
+
+// WEAKSET WEAKSET WEAKSET WEAKSET WEAKSET WEAKSET
+// тоже для объектов
+const arrWeakSet = new WeakSet()
+// только has метод и всё
+// работает как счетчик, есть или нет поле
+
+
+//... spread Разворачивает массив
+let clonedArr3 = [...arr3]; //развернули, засунули в []. Можно разворачивать NodeList сюда (элементы разметки) и превращать в массив. Можно добавить другие массивы через запятую:
+let superArr = [...arr1, 'левый элемент добавили', ...arr3];
+
+// при разворачивании объекта, нужно результаты оборачивать в другие объектики
+let clonedStandarObj = { ...standarObj, ...standarObj }; //развернули, засунули в {}
+// умный merge - слияние общих ключей объектов. Берет знач из последнего!!
+console.log(clonedStandarObj); // ключи и значения общие, ничего не поменяется
+
+
+// rest соберет оставшиеся аргументы в массив
+function summaa(a, ...resty) { //rest
+  //...resty - это опять spread: 3 5 6 10
+  return a + resty.reduce((a, i) => a + i, 0)
+}
+summaa(...trimmedArr); //25 и тут опять был spread
+
+
+
+
+// деструктуризация 
+function returnSmolArray(a, b, c) {
+  return [
+    a + b + c,
+    a / b,
+    "strochka",
+    [1, c + 3],
+    { name: "ya" },
+  ]
+}
+const [sumOfFunk = 'Дефолтное значение. Сработает при undefined', supOfFunk, ...restOfFunk] = returnSmolArray(1, 2, 3);
+// разбили массив и создали несколько const 
+sumOfFunk; //6
+restOfFunk; //["strochka", Array(2), {…}]
+
+// деструктурировать можно и объект 
+const { name: nameOfObj = 'не найдено', age: ageOfObj, ...restOfObj } = personBoi
+
+restOfObj; //{sayHello: ƒ, sayHelloInWindowContext: ƒ, logInfo: ƒ}
+
+
+
+
+

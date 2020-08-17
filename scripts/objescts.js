@@ -124,9 +124,12 @@ var point0 = {
     //при этом в классе нет свойств x и y, значит, к ним нет прямого доступа
 };
 
-point0['z'] = 35;// добавление свойства
+point0['z'] = 35;// добавление свойства, заданного в ' '
 delete point0.z; // Удаление свойства 
 'z' in point0; // false, z - undefined
+// Доступ к свойствам объектов возможет не только через точку - 
+// через квадратные скобки можно получить доступ к свойствам объекта,
+// имена которых составлены не по правилам именования переменных.
 
 Object.defineProperty(point0, '_secretVal', { //изменим дескрипторы свойства
     enumerable: false, // не перечисляется в for in
@@ -135,12 +138,11 @@ Object.defineProperty(point0, '_secretVal', { //изменим дескрипт�
 });
 
 Object.defineProperty(point0, 'newVal', { // создадим новое св-во
-    newVal: 'У свойства, заданного так, по умолчанию 3 false как у примера выше'
+    value: 'У свойства, заданного так, по умолчанию 3 false как у примера выше'
 });
 
 point0.coordinates = [1, 2]; //setter
 point0.coordinates; //x = 1, y = 2 Без скобок getter
-
 
 
 
@@ -162,7 +164,6 @@ let point1 = new Point2D(1, -2); //у конструктора this - созда
 typeof Point2D; // function Это именно ФуНкЦиЯ-конструктор
 typeof point1; //object
 point1 instanceof Point2D; //true
-
 
 
 
@@ -194,8 +195,7 @@ let point2 = Object.create(Point2D.prototype,
 
     }
 );
-point2.status = 'working'; // добавили свойсто стандартно
-console.log(point2);
+point2.status = 'working'; // добавили свойсто стандартно. флаги: true true true
 
 
 
@@ -254,6 +254,7 @@ const catLion = new Cat({
 
 typeof Cat // function
 catLion instanceof Animal //true
+catLion.ageInHumanCount; //35
 
 
 
@@ -261,15 +262,14 @@ catLion instanceof Animal //true
 //////////////PROTOTYPES PROTOTYPES PROTOTYPES
 
 Object.getPrototypeOf(Object.prototype); // null
-console.log(Object.prototype.constructor);
-// null
+justAnimal.constructor; // весь класс Animal 
+Cat.prototype.constructor; // весь класс Animal 
 
 Cat.prototype;
 // { constructor: ƒ, voice: ƒ }
 // constructor: class Animal
 // voice: ƒ voice()
 
-Cat.prototype.constructor; // просто весь класс Animal 
 
 // можно впринипе задать:
 //Point2D.prototype = Object;
@@ -280,8 +280,7 @@ Cat.prototype.constructor; // просто весь класс Animal
 // Значением prototype должен быть только Объект
 
 Cat.prototype.size = "big"; // Присвоили size классу Animal 
-console.log("size" in justAnimal); // true   key IN obj - проверка на наличие
-console.log(catLion);
+"size" in catLion // true   key IN obj - проверка на наличие
 
 //Object.assign(obj1, obj2) объединит св-ва в obj1. Совпадающие свойства перезапишутся из 2
 let clonedAnimal = Object.assign({}, justAnimal);
@@ -297,7 +296,7 @@ simplArr.newFunction4AllArrays(20); //20, 40, 60
 //Свойство constructor - содержит ссылку на конструктор, которым объект был создан
 [].constructor; //Array;
 ({}).constructor; //Object;
-Object.prototype.constructor; //Objecrt
+Object.prototype.constructor; //Object
 
 null;
 //↑↑ __proto__ - ссылка
@@ -306,20 +305,9 @@ Object.prototype; // ←←←portotype for← Object
 //↑↑ __proto__ ссылка
 Date.prototype; // →→→constructor to→  Date
 Date.prototype; // ←←←portotype for← Date
-//↑↑ __proto__ - ссылка ↓↓↓↓
+//↑↑ __proto__ - ссылка 
 new Date();
 
-
-
-
-
-/////////////////////////////////////////////////////
-/////////////////////////////////////////////////////
-// Доступ к свойствам объектов возможет не только через точку - 
-// через квадратные скобки можно получить доступ к свойствам объекта,
-// имена которых составлены не по правилам именования переменных.
-
-//point['x variable strange name']; -- значение, заданное в ' '
 
 
 

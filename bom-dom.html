@@ -45,11 +45,15 @@
         <button onclick="openWindow()">I will open google</button>
         <button class="ajax-init">I'll request some data</button>
         <div class="ajax-response">
-            Response: <span id="answer">[empty]</span>
+            request1.responseText: <span id="answer">[empty]</span>
         </div>
 
         <p class="p1">Lorem ipsum dolor sit amet .p1</p>
-        <p class="p2">Меня слушает документ.онклик и если жмакнешь меня, будет алерт! .p2</p>
+        <div class="block1">
+            <p class="p2">Меня слушает блок1.онклик и если жмакнешь меня, будет алерт! .p2</p>
+            <button>just button. Её тоже слушают в блоке</button>
+        </div>
+
 
         <img id="elemToChangeHTML" class='imgSh' src="images/shrek.png" alt="img"> imgSh #elemToChangeHTML
         <div class=div1>
@@ -69,7 +73,7 @@
     </main>
 
     <script src="scripts/async.js"></script>
-    <!-- <script src="scripts/dombom.js"></script> -->
+    <script src="scripts/dombom.js"></script>
 
 </body>
 

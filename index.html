@@ -36,9 +36,11 @@
     </header>
     <!-- pos absolute считается от любого ' не static' родителя или если у род есть transfTranslate -->
     <!-- →→	←← ↑↑ ↓↓ -->
-
     <section class="top-section">
         <h1>Главный заголовок. Он 1 такой</h1>
+
+        <p>Тут НЕ подключены async.js и dombom.js</p>
+
         <h6>самый нижний подзаголовок. h6 Например, сноска </h6>
         <h3 class="gradient">це градiент</h3>
         <h3 class="gradient">це градiент</h3>
@@ -46,8 +48,8 @@
     </section>
 
     <main class="main">
-        <p>Я <em>взял</em> уже готовую<wbr> ссылку на страницу
-            <a href="https://www.mozilla.org/ru/" title="Да, вот эту">Тыкабельный текст (Анкор)</a>.
+        <p> ссылка:
+            <a href="https://www.mozilla.org/ru/" title="Да, вот эту">Тыкабе<wbr>льный текст (Анкор)</a>
         </p>
         <!-- тег <wbr> говорит, где можно разрезать огромные слова-->
         <!-- просто br - перенос строки-->
@@ -56,7 +58,7 @@
 
         <p><a href="https://download.mozilla.org/?product=firefox-39.0-SSL&os=win&lang=en-US"
                 download="firefox-39-installer.exe">
-                Скачать Firefox 39 для Windows
+                Скачать Firefox
             </a></p>
         <!-- атрибут download чтобы начать скачивание -->
 
@@ -289,8 +291,6 @@
     <script src="scripts/objescts.js"></script>
     <script src="scripts/functions.js"></script>
     <script src="scripts/collections.js"></script>
-    <script src="scripts/async.js"></script>
-    <script src="scripts/dombom.js"></script>
 </body>
 
 </html>

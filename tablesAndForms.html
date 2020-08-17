@@ -27,7 +27,7 @@
         </nav>
     </header>
 
-    <main>
+    <main class="tabl-forms-main ">
         <h1>Таблицы и формы</h1>
 
         <form style="margin-top: 25px;">
@@ -90,25 +90,25 @@
 
         <form action="#" method="GET" class="booking__form">
             <!-- action:
-                    адрес ресурса, где будет обрабатываться введенная форма
-                
-                        method:
-                    GET -передать в браузерную строку в формате [имя параметра] = [назначение параметра]&[следующая][пара]
-                    POST - позволяет передать больше, до 4кб, передача анонимна и не отражается. Например, логин и пароль-->
+                адрес ресурса, где будет обрабатываться введенная форма
+            
+                    method:
+                GET -передать в браузерную строку в формате [имя параметра] = [назначение параметра]&[следующая][пара]
+                POST - позволяет передать больше, до 4кб, передача анонимна и не отражается. Например, логин и пароль-->
 
             <input type="text" name="guest-name" value=" Name">
             <!-- type: 
-                        чекбоксы, радио, пароль, емейл и submit! последний - чтоб отправить данные на сервак по методу в action
-        
-                            value: 
-                        значение, которое будет передано на сервер 
-                    
-                            target:
-                        как будут отображены результаты, тут или в новой вкладке. по умолчанию тут -->
+                чекбоксы, радио, пароль, емейл и submit! последний - чтоб отправить данные на сервак по методу в action
+
+                    value: 
+                значение, которое будет передано на сервер 
+            
+                    target:
+                как будут отображены результаты, тут или в новой вкладке. по умолчанию тут -->
             <input type="email" name="email" value="Email">
-            <input type="date" name="date" value="Date">
-            <input type="time" name="time" value=" Time">
-            <input type="number" name="number-of-persons" value="People">
+            <input type="date" name="date">
+            <input type="time" name="time">
+            <input type="number" name="number-of-persons">
             <input type="submit" name="submit" value="Find a table" class="booking-submit">
         </form>
 
@@ -163,7 +163,7 @@
                 <div>
                     <input type="checkbox" name="bike" value="yes" tabindex="5" /> Bicycle <br>
                     <input type="checkbox" name="car" value="yes" tabindex="6" /> Car <br>
-                    <input disabled type="checkbox" name="house" value=yes" tabindex="7" /> House <br>
+                    <input disabled type="checkbox" name="house" value="yes" tabindex="7" /> House <br>
                 </div>
             </div>
             <div>
@@ -174,18 +174,25 @@
                 <input type="file" tabindex="9" />
             </div>
             <div>
-                <p>Favorite color</p>
-                <select tabindex="10">
-                    <option value="red">Red</option>
-                    <option value="green">Green</option>
-                    <option value="blue">Blue</option>
-                </select>
-            </div>
-            <div>
                 <p>What's next?</p>
                 <button tabindex="11" type="submit">Send</button>
                 <button tabindex="12" type="reset">Reset</button>
             </div>
+        </form>
+        <form action="#" method="get"></form>
+        <div>
+            <p>Favorite color</p>
+            <select tabindex="10">
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+            </select>
+        </div>
+        <div>
+            <p>What's next?</p>
+            <button tabindex="11" type="submit">Send</button>
+            <button tabindex="12" type="reset">Reset</button>
+        </div>
         </form>
     </main>
 
