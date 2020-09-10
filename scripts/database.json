@@ -1,0 +1,18 @@
+{
+	"users": [
+		{
+			"ID": 0,
+			"name": "John",
+			"surname": "Smith",
+			"sex": 0,
+			"photo": "url//"
+		},
+		{
+			"ID": 1,
+			"name": "Ann",
+			"surname": "Smith",
+			"sex": 1,
+			"photo": "url//"
+		}
+	]
+}

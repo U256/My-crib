@@ -13,7 +13,7 @@ const requestURLforSomeComments = 'https://jsonplaceholder.typicode.com/comments
 const requestURLforSomePhotos = 'https://jsonplaceholder.typicode.com/photos';
 
 //formData
-// cookies - 4кб летят на сервер
+// cookies - 4 кб летят на сервер
 
 function afterTimeoutFn() {
 	let yaPrisvoilsa = "After 2 sec"
@@ -41,45 +41,57 @@ setInterval(() => {
 // AJAX AJAX AJAX
 // получаем данные со страницы или формы -> Запрос XMLHttpRequest -> Ответ -> Отображение результатов
 
-let request1 = new XMLHttpRequest();
+window.addEventListener("DOMContentLoaded", () => {
+	function reqq() {
+		let request1 = new XMLHttpRequest();
 
-document.querySelector('.ajax-init').addEventListener('click', e => {
-	request1.open('GET', requestURLforSomeUsers);
-	// Get  для получения данных. запрос в составе URL
-	// Post  для создания.  запрос в теле HTTP 
-	// Delete удаления
-	// Put  для полного обновления элемента
-	// Patch для частичного обновления элемента
+		document.querySelector('.ajax-init').addEventListener('click', e => {
+			request1.open('GET', requestURLforSomeUsers); //Этот метод позволяет настроить запрос перед отправкой
+			// Get  для получения данных. запрос в составе URL
+			// Post  для создания.  запрос в теле HTTP 
+			// Delete удаления
+			// Put  для полного обновления элемента
+			// Patch для частичного обновления элемента
 
-	// По правилу ограничения домена(Same Origin Policy), нельзя запрашивать данные источников, у которых домен, протокол и порт не соответствуют моему.
-	request1.readyState; //1
-	// 0 - open не вызван
-	// 1 - вызван
-	// 2 - получены заголовки
-	// 3 - идёт приём
-	// 4 - приём завершен
-	request1
+			request1.setRequestHeader("Content-type", "application/json; charset=utf-8");
 
-	request1.responseType = 'json' // иначе получим ТЕКСТ. все запросы по умолч в виде текста, а не JSON
-	//request1.responseText //- теперь не работает
+			// По правилу ограничения домена(Same Origin Policy), нельзя запрашивать данные источников, у которых домен, протокол и порт не соответствуют моему.
+			request1.readyState; //1
+			// 0 - open не вызван
+			// 1 - вызван
+			// 2 - получены заголовки
+			// 3 - идёт приём
+			// 4 - приём завершен
 
-	request1.onload = () => {
-		console.log(request1.response); // теперь JSON
-		document.querySelector("#answer").innerHTML = JSON.stringify(request1.response);
+			//request1.responseType = 'json' // иначе получим ТЕКСТ. все запросы по умолч в виде текста, а не JSON
+			//request1.responseText //- теперь не работает
+
+			// request1.onload = () => {
+			// 	console.log(request1.response); // теперь JSON
+			// 	document.querySelector("#answer").innerHTML = JSON.stringify(request1.response);
+			// }
+
+			request1.send(); // отправили запрос на сервер
+			// при POST запросе нужно вложить (данные)
+
+			request1.addEventListener("load", function () {
+				if (request1.status == 200) {
+					let data = JSON.parse(request1.response)
+					console.log(data);
+					// и тут что угодно с data
+				}
+			})
+		});
 	}
+}) // старая система, можно проще:
 
 
-	request1.send(); // отправили запрос на сервер
-	// при POST запросе нужно вложить (данные)
 
-	request1.status;
-
-});
-
-
-fetch('https://jsonplaceholder.typicode.com/todos/1')
+fetch('https://jsonplaceholder.typicode.com/todos/1') // без модификаторов отрпвит GET
 	.then(response => response.json()) //{userId: 1, id: 1, title: "delectus aut autem", completed: false}
-
+	// и делааем что хотим. Намного короче
+	.catch(err => console.error('!!'));
+//this.remove();
 
 
 setTimeout(() => {
@@ -123,7 +135,7 @@ const prom2 = new Promise((resolve, reject) => {
 
 
 
-	
+
 // async await - упрощает синтаксис промисов
 async function asyncFnc11() { //async перед объявлением функции Обязывает её всегда возвращать промис
 	return 1; //return Promise.resolve(1);

@@ -61,6 +61,13 @@ h1 {
           justify-content: space-between;
 }
 
+@media (max-width: 575px) {
+  .header-nav ul {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
 .nav-li {
   margin: 16px 5px;
   padding: 5px 10px;
@@ -76,6 +83,14 @@ h1 {
           box-shadow: 4px 4px 5px #8a8a8a;
   border-radius: 8px;
   /*гор. смещение вправо -- вертикальное вниз -- сила размытия -- цвет  */
+}
+
+@media (max-width: 575px) {
+  .nav-li {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 45%;
+            flex: 0 0 45%;
+  }
 }
 
 .nav-li_active {
@@ -206,9 +221,142 @@ h1 {
 	задаёт положение содержимого замещаемого элемента внутри контейнера left/center/right top/center/bottom  px / em/ %       */
 }
 
+.section11 {
+  gap: 5px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  display: -ms-grid;
+  display: grid;
+  grid-template: ". it1 it2 ." 1fr ". it3 it4 ." 1fr ". it5 it6 ." 1fr/1fr minmax(auto, 300px) minmax(auto, 300px) 1fr;
+}
+
+.item-sec {
+  padding: 10px;
+  border: 2px dotted gray;
+  border-radius: 8px;
+  background-color: #c8c0c0;
+}
+
+.section1__item:first-child {
+  grid-area: it1;
+}
+
+.section1__item:nth-child(2) {
+  grid-area: it2;
+}
+
+.section1__item:nth-child(3) {
+  grid-area: it3;
+}
+
+.section1__item:nth-child(4) {
+  grid-area: it4;
+}
+
+.section1__item:nth-child(5) {
+  grid-area: it5;
+}
+
+.section1__item:last-child {
+  grid-area: it6;
+}
+
+.section22 {
+  border: 2px solid #f89090;
+  padding: 4px;
+  height: 400px;
+  max-width: 600px;
+  margin: 10px auto 0;
+  gap: 8px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 120px 120px;
+  -ms-grid-columns: (minmax(60px, 140px))[3];
+      grid-template: 120px 120px/repeat(3, minmax(60px, 140px));
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  justify-items: stretch;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.section2__item {
+  background-color: #ddf;
+  border: 2px dashed gray;
+}
+
+.section2__item:first-child {
+  -ms-grid-column-align: right;
+      justify-self: right;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+}
+
+.section2__item:nth-child(5) {
+  grid-column: span 2;
+  padding: 30px;
+  text-align: center;
+}
+
+.section33 {
+  padding: 4px;
+  max-width: 600px;
+  margin: 40px auto;
+  grid-gap: 8px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(150px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-auto-rows: 1fr;
+}
+
+.section3__item:first-child {
+  -ms-grid-column-align: left;
+      justify-self: left;
+}
+
+.section3__item:last-child {
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+}
+
 .bootstrap-testt {
   padding-top: 40px;
-  background: #fee;
+}
+
+.bootstrap-testt .container {
+  margin-bottom: 40px;
+  background: url(../images/desktop-bootstrap.PNG) center/contain;
+}
+
+@media (max-width: 1200px) {
+  .bootstrap-testt .container {
+    background: url(../images/1200px.PNG) center/contain;
+  }
+}
+
+@media (max-width: 991px) {
+  .bootstrap-testt .container {
+    background: url(../images/991px.PNG) center/contain;
+  }
+}
+
+@media (max-width: 767px) {
+  .bootstrap-testt .container {
+    background: url(../images/767px.PNG) center/contain;
+  }
+}
+
+@media (max-width: 400px) {
+  .bootstrap-testt .container {
+    background: url(../images/400px.PNG) center/contain;
+  }
 }
 
 .frame {
@@ -241,12 +389,23 @@ h1 {
   background-color: #f5e874;
 }
 
-.bomdom-main * {
-  margin: 10px 0;
+.superButton {
+  margin-top: 15px;
+  position: relative;
+  background-position: left top;
+  width: 25px;
+  height: 34px;
+  /* треть изображения в 100рх*/
+  background-image: url("../images/nav.png");
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  display: inline-block;
 }
 
-button, a {
-  display: block;
+.superButton:hover {
+  background-position: left top -34px;
+  /*от топа отнимаем 34*/
+  background-origin: content-box;
 }
 
 #answer {
@@ -254,6 +413,14 @@ button, a {
   max-height: 200px;
   width: 96%;
   overflow: scroll;
+}
+
+.bomdom-main * {
+  margin: 10px 0;
+}
+
+button, a {
+  display: block;
 }
 
 .block1 {

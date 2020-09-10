@@ -1,0 +1,145 @@
+.section11 {
+	gap: 5px;
+	margin-bottom: 20px;
+	padding-top: 10px;
+	//align-items: center; //если блоки разной высоты
+
+	// grid-template: 
+	// 1fr 1fr 1fr 1fr/
+	// 1fr minmax(auto, 300px) minmax(auto, 300px) 1fr;
+	display: grid;
+	grid-template: 
+	". it1 it2 ." 1fr  
+	". it3 it4 ." 1fr 
+	". it5 it6 ." 1fr 
+	/ 1fr minmax(auto, 300px) minmax(auto, 300px) 1fr;
+}
+
+
+.item-sec {
+	//ALL items
+	padding: 10px;
+	border: 2px dotted gray;
+	border-radius: 8px;
+	background-color: rgb(200, 192, 192);
+}
+
+.section1__item {
+
+	// проблема в том, что приходится каждому давать позицию. Лучше контейнер общий сделать:
+	// ". header header . "
+	// ". aside main . "
+	// ". footer footer . "
+	// а уже в мейне не морочить себе голову как тут:
+
+	&:first-child {
+		grid-area: it1;
+	}
+	&:nth-child(2) {
+		grid-area: it2;
+	}
+	&:nth-child(3) {
+		grid-area: it3;
+	}
+	&:nth-child(4) {
+		grid-area: it4;
+	}
+	&:nth-child(5) {
+		grid-area: it5;
+	}
+	&:last-child {
+		grid-area: it6;
+	}
+
+	// &:first-child {
+	// 	grid-area: 1/2/2/3;
+	// }
+	// &:nth-child(2) {
+	// 	grid-area: 1/3/2/4;
+	// }
+	// &:nth-child(3) {
+	// 	grid-area: 2/2/3/3;
+	// }
+	// &:nth-child(4) {
+	// 	grid-area: 2/3/3/4;
+	// }
+	// &:nth-child(5) {
+	// 	grid-area: 3/2/4/3;
+	// }
+	// &:nth-child(6) {
+	// 	grid-area: 3/3/4/4;
+	// }
+	// &:nth-child(7) {
+	// 	grid-area: 4/2/5/3;
+	// }
+	// &:last-child {
+	// 	grid-area: 4/3/5/4;
+	// }
+}
+
+.section22 {
+	border: 2px solid rgb(248, 144, 144);
+	padding: 4px;
+	height: 400px;
+	max-width: 600px;
+	margin: 10px auto 0;
+	gap: 8px;
+	display: grid;
+	grid-template: 120px 120px / repeat(3, minmax(60px, 140px));
+
+	//grid-auto-rows: 100px 100px 150px 90px;
+	// ИЛИ
+	//grid-auto-columns: 110px ;
+
+	align-items: start; // Выравнивает содержимое вдоль вертикальной оси
+	justify-items: stretch; // Выравнивает содержимое вдоль оси строки
+	
+	// след 2 работают только если сумма ячеек меньше контейнера! 
+	// если использованы fr - не сработает:
+	align-content: center; // Положение всей сетки по вертикали
+	justify-content: flex-end; // Положение всей сетки по горизонтали
+}
+
+.section2__item {
+	background-color: #ddf;
+	border: 2px dashed gray;
+
+	&:first-child {	
+		justify-self: right;
+		align-self: end;
+	}
+	// &:nth-child(2) {}
+	// &:nth-child(3) {}
+	// &:nth-child(4) {}
+	&:nth-child(5) {
+		// grid-area: 2/2/3/span 2;
+		//equal (in this case) to:
+		grid-column: span 2;
+		padding: 30px;
+		text-align: center;
+	}
+}
+
+
+.section33 {
+	padding: 4px;
+	max-width: 600px;
+	margin: 40px auto;
+	grid-gap: 8px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	grid-auto-rows: 1fr;
+}
+
+.section3__item {
+
+	//grid-area: ;
+
+	&:first-child {
+		justify-self: left;
+		//align-self: end;
+	}
+	&:last-child {
+		align-self: end;
+	}
+}

@@ -22,9 +22,10 @@
         <nav class="header-nav">
             <ul>
                 <!--unordered list-->
-                <li class="nav-li"><a href="index.html">Main page</a></li>
-                <li class="nav-li"><a href="stuff.html">Stuff</a></li>
+                <li class="nav-li"><a href="index.html">Main</a></li>
+                <li class="nav-li"><a href="grid.html">Grid</a></li>
                 <li class="nav-li nav-li_active"><a href="bom-dom.html">BOM & DOM</a></li>
+                <li class="nav-li"><a href="ajax.html">Ajax</a></li>
                 <li class="nav-li"><a href="tablesAndForms.html">Таблицы и формы</a></li>
             </ul>
         </nav>
@@ -32,7 +33,7 @@
 
 
     <main class="bomdom-main">
-        Тут подключены только async.js и dombom.js
+        Тут подключен только dombom.js
 
         <h1>Работа с BOM & DOM</h1>
         <button onclick="scroll30()">scroll 30px</button>
@@ -43,10 +44,7 @@
         <a class="a2" href="javascript: reloadPageHard()" style="margin: 5px">Ya href="javascript: reloadPageHard()"
             .a2</a>
         <button onclick="openWindow()">I will open google</button>
-        <button class="ajax-init">I'll request some data</button>
-        <div class="ajax-response">
-            request1.responseText: <span id="answer">[empty]</span>
-        </div>
+        
 
         <p class="p1">Lorem ipsum dolor sit amet .p1</p>
         <div class="block1">
@@ -72,7 +70,6 @@
 
     </main>
 
-    <script src="scripts/async.js"></script>
     <script src="scripts/dombom.js"></script>
 
 </body>

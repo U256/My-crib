@@ -1,6 +1,24 @@
 .bootstrap-testt {
+
 	padding-top: 40px;
-	background: #fee;
+
+	.container {
+		margin-bottom: 40px;
+		background: url(../images/desktop-bootstrap.PNG) center/ contain;
+		
+		@media (max-width: 1200px) {
+			background: url(../images/1200px.PNG) center/ contain;
+		}
+		@media (max-width: 991px) {
+			background: url(../images/991px.PNG) center/ contain;
+		}
+		@media (max-width: 767px) {
+			background: url(../images/767px.PNG) center/ contain;
+		}
+		@media (max-width: 400px) {
+			background: url(../images/400px.PNG) center/ contain;
+		}
+	}
 }
 
 .frame {
@@ -15,6 +33,10 @@
 	background-color: #fff;
 	font-size: 10px;
 	text-align: center;
+}
+
+.greeder-row {
+//
 }
 
 .frame1 {

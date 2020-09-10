@@ -32,7 +32,7 @@ user.name; // 'Pete'
 let strinn = new String('imma string');
 let fiv = new Number(5);
 //чтобы достучаться до род.класса у примитивов
-fiv; // выдаст оберточный вариант, а не просто 5 :
+fiv; // выдаст оберточный вариант, а не просто 5:
 //Number { 5 }
 //__proto__: Number
 //[[PrimitiveValue]]: 5
@@ -264,8 +264,6 @@ catLion.ageInHumanCount; //35
 Object.getPrototypeOf(Object.prototype); // null
 justAnimal.constructor; // весь класс Animal 
 Cat.prototype.constructor; // весь класс Animal 
-
-Cat.prototype;
 // { constructor: ƒ, voice: ƒ }
 // constructor: class Animal
 // voice: ƒ voice()

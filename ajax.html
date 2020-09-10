@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Всячина</title>
+    <title>Запросы</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon"
         href="https://img.favpng.com/20/20/12/computer-icons-favicon-science-iconfinder-png-favpng-Fsyg7qgB3QwTWmHEThnpi3qza.jpg"
@@ -20,14 +20,25 @@
         <nav class="header-nav">
             <ul>
                 <!--unordered list-->
-                <li class="nav-li"><a href="index.html">Main page</a></li>
-                <li class="nav-li nav-li_active"><a href="stuff.html">Stuff</a></li>
+                <li class="nav-li"><a href="index.html">Main</a></li>
+                <li class="nav-li"><a href="grid.html">Grid</a></li>
                 <li class="nav-li"><a href="bom-dom.html">BOM & DOM</a></li>
+                <li class="nav-li nav-li_active"><a href="ajax.html">Ajax</a></li>
                 <li class="nav-li"><a href="tablesAndForms.html">Таблицы и формы</a></li>
             </ul>
         </nav>
     </header>
     <main>
+        Тут подключен только async.js
+        <h1>Работа с запросами</h1>
+
+
+
+        <button class="ajax-init">I'll request some data</button>
+        <div class="ajax-response">
+            request1.responseText: <span id="answer">[empty]</span>
+        </div>
+
         <!-- Стандартная дата -->
         <p><time datetime="2020-01-20">20 Января 2020</time></p>
         <!-- Только год и месяц -->
@@ -49,24 +60,19 @@
             <source src="Touch.mp3" type="audio/mp3">
         </audio>
 
-        <iframe src="https://vk.com/video_ext.php?oid=-109125388&id=456245812&hash=0a0fa8af2befece9" width="640"
+        <!-- <iframe src="https://vk.com/video_ext.php?oid=-109125388&id=456245812&hash=0a0fa8af2befece9" width="640"
             height="360" frameborder="2" allowfullscreen>
-        </iframe>
-        <!-- внедрение куска чужой веб-страницы -->
+        </iframe> -->
 
-        <video controls width="200" height="200">
+        <!-- <video controls width="200" height="200">
             <source src="rabbit320.mp4" type="video/mp4">
             <source src="rabbit320.webm" type="video/webm">
             <p>Ваш браузер не подддерживает HTML5 видео. Вот <a href="vk.com">ссылка на видео</a> взамен.</p>
-        </video>
-
-        <div>
-            супер кнопка без css, лучшая в жизни:
-            <a href="index.html"><span class="superButton"></span></a>
-        </div>
+        </video> -->
 
         <address>
-            <p>Автор страницы — <a href="https://www.youtube.com/watch?v=RxxTQRGv4V8">Вот</a>.</p>
+            <p>Автор страницы — <a style="display: inline-block;"
+                    href="https://www.youtube.com/watch?v=RxxTQRGv4V8">Вот</a>.</p>
         </address>
 
         <!--unordered list, есть ol-->
@@ -85,6 +91,8 @@
         '	                 &apos;
         &	                 &amp;
      -->
+
+    <script src="scripts/async.js"></script>
 </body>
 
 </html>

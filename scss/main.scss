@@ -45,11 +45,16 @@ h1 {
 	border: 1px solid rgb(185, 174, 174);
 	border-radius: 15px;
 	color: rgb(49, 4, 195);
+
 	ul {
 		padding: 5px 10px;
 		margin: 0;
     display: flex;
-    justify-content: space-between;
+		justify-content: space-between;
+		
+		@media (max-width: 575px) {
+			flex-wrap: wrap;
+		}
 	}
 }
 // text-align: justify; ЗАПОМНИ УЖЕ СУКА
@@ -65,6 +70,10 @@ h1 {
 	border-radius: 8px;
 	/*гор. смещение вправо -- вертикальное вниз -- сила размытия -- цвет  */
 
+	@media (max-width: 575px) {
+			flex: 0 0 45%;
+		}
+
 	&_active {
 		background-color: #9438fd6b;
 	}
@@ -78,8 +87,9 @@ h1 {
 
 
 @import "_index-page-style";
+@import "_grid";
 @import "_bootstrap-grid";
-//@import "_stuff-page-style";
+@import "_ajax-page-style";
 @import "_dom-bom-page-style";
 @import "_tables-forms-page-style";
 
