@@ -70,8 +70,48 @@
         </article>
 
         <section>
-            <br><b>Секция</b> - как артикль, только нельзя его выдрать из контекста. Секция кода.
+            <br>
+            <h2>Секция - как артикль, только нельзя его выдрать из контекста. Секция кода.</h2>
         </section>
+
+        <div class="h-wrapper">Разбор ошибок валидатора v3:
+            <section class="about-section">
+                <article>
+                    <h1 class="smol-h">Section - Article. Article heading h1</h1>
+                    <p>p Warning</p>
+                </article>
+            </section>
+
+            <section class="about-section">
+                <div>
+                    <h1 class="smol-h">Section - div. Div heading h1</h1>
+                    <p>p No warning</p>
+                </div>
+            </section>
+
+            <section class="about-section">
+                <h1 class="smol-h">Section. Section heading h1</h1>
+                <article>
+                    <h2 class="smol-h">Section - Article. Article heading h1</h2>
+                    <p>p No warning</p>
+                </article>
+            </section>
+
+            <section class="about-section">
+                <h1 class="smol-h">Section. Section heading h1</h1>
+                <div>
+                    <p>p Test</p>
+                </div>
+            </section>
+
+            <section class="about-section">               
+                <div>
+                    <h2 class="smol-h">Section - div. Div heading h2</h2>
+                    <p>p Test</p>
+                </div>
+            </section>
+        </div>
+
 
         <figure>
             <img id="currentElem" style="width: 120px;" alt="поясняющий атрибут"
@@ -93,6 +133,8 @@
     <hr> <!-- полоса - разделитель -->
 
     <section class="bootstrap-testt">
+        <h1>Bootstrap grid</h1>
+        <h2>aaa</h2>
         <div class="container">
             <!-- container-fluid 4 whole-screen container -->
             <div class="row align-items-center lasure-row">
@@ -173,16 +215,16 @@
         </div>
         <!-- отступы
     
-            m-5 -- margin: 3rem !important;
-            mx-2 -- margin-left: .5rem !imortant;
+            m-5 - margin: 3rem !important;
+            mx-2 - margin-left: .5rem !imortant;
                             margin-right: .5rem !imortant;
-            pt-md-3 -- padding-top: 1rem !important; (min-width: 768px)
-            pb-lg-0 -- padding-bottom: 0 !important; (min-width: 992px)
+            pt-md-3 - padding-top: 1rem !important; (min-width: 768px)
+            pb-lg-0 - padding-bottom: 0 !important; (min-width: 992px)
 
         
             m -  margin,  	p -  padding
             
-            t b l r --для margin- или padding- :: -top -bottom -left -right
+            t b l r -для margin- или padding- :: -top -bottom -left -right
 
             x - и *-left и *-right
             y - и *-top и *-bottom
