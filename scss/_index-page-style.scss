@@ -137,7 +137,7 @@
 
 }
 
-.img-wrapper img {
+//.img-wrapper img {
 	/* чтобы также издеваться над замещаемыми элементами <img> <input type="image">, <embed>, <iframe>, <video>, <canvas> можно из завернуть в клетку нужной формы и использовать 
 
 	object-fit*/
@@ -151,4 +151,4 @@
 	/* object-position 
 	
 	задаёт положение содержимого замещаемого элемента внутри контейнера left/center/right top/center/bottom  px / em/ %       */
-}
+//}
