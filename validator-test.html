@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<!--    символьная кодировка-->
+
+	<title>Validator tesst</title>
+	<!--    Задача <head> — хранить метаданные документа.-->
+	<!--    а также в title могут быть другие метаданные: -->
+	<!--    автор и важные ключевые слова, описывающие документ.-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Задача этой страницы в том, чтобы обучить
+    меня всему тому, что нужно для разработки веб-сайтов и приложений.">
+	<!--    это используется поисковиками-->
+
+	<link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<header>
+		<nav class="header-nav">
+			<ul>
+				<!--unordered list-->
+				<li class="nav-li"><a href="index.html">Main</a></li>
+				<li class="nav-li nav-li_active"><a href="validator-test.html">Validator</a></li>
+				<li class="nav-li"><a href="grid.html">Grid</a></li>
+				<li class="nav-li"><a href="bom-dom.html">BOM & DOM</a></li>
+				<li class="nav-li"><a href="ajax.html">Ajax</a></li>
+				<li class="nav-li"><a href="tablesAndForms.html">Таблицы и формы</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<aside>
+		<button type="button">Abbo</button>
+		<div>
+			<div>
+				<h1>User name of aside block</h1>
+			</div>
+		</div>
+	</aside>
+
+	<section class="about-section">
+		<div>
+			<button>Notifications bar</button>
+		</div>
+		<div>
+			<h1 class="smol-h">User name </h1>
+		</div>
+		
+	
+	</section>
+
+	<main class="main">
+		Разбор ошибок валидатора:
+		<section class="about-section">
+			<!-- Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections. -->
+			<article>
+				<h1 class="smol-h">Section - Article. Article heading h1</h1>
+				<!--  Consider using the h1 element as a top-level heading only -->
+				<p>p Warning</p>
+			</article>
+		</section>
+
+		<section class="about-section">
+				<h1 class="smol-h">Section. Section heading h1</h1>
+				<footer>Then footer
+					<div>
+						for all empty blocks
+					</div>
+				</footer>
+		</section>
+
+		<section class="about-section">
+			<div>
+				<div>
+					<h1 class="smol-h">Section -div -div. Div heading h1</h1>
+				</div>
+				<p>p No warning</p>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>
