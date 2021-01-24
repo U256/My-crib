@@ -1,0 +1,255 @@
+// этот док вставляется в конец css
+
+//.anim--custom {} без предустановок, делай в классе сам своё
+
+// автоматически навешивается родителю
+.ov-hidden {
+  overflow: hidden;
+}
+
+._appear--up {
+  transition-property: transform, opacity;
+  transition-duration: 0.6s;
+  transform: translate(0, 60%);
+  opacity: 0;
+}
+
+._appear--down {
+  transition-property: transform, opacity;
+  transition-duration: 0.6s;
+  transform: translate(0, -60%);
+  opacity: 0;
+}
+
+._appear--left {
+  transition-property: transform, opacity;
+  transition-duration: 0.8s;
+  transform: translate(-60%, 0);
+  opacity: 0;
+}
+
+._appear--right {
+  transition-property: transform, opacity;
+  transition-duration: 0.8s;
+  transform: translate(60%, 0);
+  opacity: 0;
+}
+
+._appear--jump-out {
+  transform: scale(0.3, 0.1);
+  opacity: 0;
+  transition-property: transform, opacity;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.28, 0.62, 0.65, 1.64);
+}
+
+._appear--zoom-in {
+  transform: scale(0.7, 0.7);
+  opacity: 0;
+  transition-property: transform, opacity;
+  transition-duration: 0.4s;
+  transition-timing-function: linear;
+}
+
+._appear--lean {
+  transform: perspective(200px) rotateX(50deg) scale(0.9);
+  transition-property: transform;
+  transition-duration: 0.6s;
+  transition-delay: 0.2s;
+  transition-timing-function: linear;
+}
+
+._appear--impend {
+  transform: perspective(200px) rotateX(-50deg) scale(0.9);
+  transition-property: transform;
+  transition-duration: 0.6s;
+  transition-delay: 0.2s;
+  transition-timing-function: linear;
+}
+
+// чтоб сиблинги выезжали по очереди. Нижний левый угол страницы чекай
+//._anim--cascade-item {} -> не ищется JSом, нужен только в след конструкции css
+// поэтому вместо и вместе с sibling НЕ использовать другие виды анимацииб описанные выше!
+// строго порядок ._anim--cascade-wrapper > ._anim--cascade-item
+
+._appear--cascade-wrapper._appeared {
+  ._appear--cascade-item {
+    @for $var from 1 to 8 {
+      $delay: $var * 0.2;
+      &:nth-child(#{$var}) {
+        @if $var==1 {
+          transition: transform 0.8s ease 0s, opacity 0.8s;
+        } @else {
+          transition: transform 0.8s ease #{$delay + s},
+            opacity 0.8s ease #{$delay + s};
+        }
+      }
+    }
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// класс для js, убирает повторную анимацию при скролле вверх
+//._appear-once {}
+
+._appeared {
+  transform: none;
+  opacity: 1;
+}
+
+.test-text-ul {
+  margin-top: 200px;
+  padding: 20px;
+  border: 1px solid #000;
+  text-align: justify;
+  background-color: #fef;
+  list-style-type: none;
+}
+
+.test-text-li {
+  font-size: 14px;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-weight: 400;
+  letter-spacing: 0.6px;
+  word-spacing: 4px;
+  border: 1px solid rgb(139, 137, 137);
+  background: #eff;
+  border-radius: 10px;
+}
+
+/////////////
+@keyframes spinning {
+  //animation: spinning 2s linear infinite alternate 2s forwards;
+  0% {
+    transform: none;
+  }
+  5% {
+    transform: rotate(10deg);
+  }
+  10% {
+    border-radius: 6px;
+  }
+  15% {
+    transform: rotate(-10deg);
+  }
+  20% {
+    transform: none;
+    border-radius: 19px;
+  }
+}
+
+@keyframes click {
+  //animation: click 3s linear infinite 2s forwards;
+  0% {
+    transform: none;
+  }
+  2% {
+    transform: translate(2px, 2px);
+  }
+  4% {
+    transform: none;
+  }
+  6% {
+    transform: translate(2px, 2px);
+  }
+  8% {
+    transform: none;
+  }
+}
+
+@keyframes heartbit {
+  //animation: heartbit 4s linear infinite 2s forwards;
+  0% {
+    transform: scale(1);
+  }
+  4% {
+    transform: scale(0.9);
+  }
+  8% {
+    transform: scale(1);
+  }
+  12% {
+    transform: scale(0.9);
+  }
+  16% {
+    transform: scale(1);
+  }
+}
+
+@keyframes flip {
+  //animation: flip 4s linear infinite 3s forwards;
+  0% {
+    transform: none;
+  }
+  8% {
+    transform: rotateX(90deg);
+  }
+  16% {
+    transform: none;
+  }
+}
+
+@keyframes clickbait {
+  0% {
+    transform: none;
+  }
+  2% {
+    transform: scaleX(1.05);
+  }
+  6% {
+    transform: scaleX(0.95);
+  }
+  10% {
+    transform: none;
+  }
+}
+
+
+/*
+Попробовать:
+<ul class="test-text-ul _anim--cascade-wrapper">
+  <li class="_anim--cascade-item test-text-li">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates itaque eum magnam harum incidunt minima
+    expedita quam? Voluptatum nam, aspernatur quos debitis excepturi vel natus labore ipsam quae quaerat
+    architecto amet esse repellendus facere cum deserunt odit a expedita illum. Provident blanditiis ipsam
+    facere soluta velit harum dignissimos. Ipsa, cupiditate.
+    Lorem ipsum dolor sit amet.
+  </li>
+  <li class="_anim--cascade-item test-text-li">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates itaque eum magnam harum incidunt minima
+    expedita
+    quam? Voluptatum nam, aspernatur quos debitis excepturi vel natus labore ipsam quae quaerat architecto amet
+    esse
+    repellendus facere cum deserunt odit a expedita illum. Provident blanditiis ipsam facere soluta velit harum
+    dignissimos. Ipsa, cupiditate.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex labore magnam dicta est ipsa, placeat quam porro
+    sunt facere nam omnis aliquid mollitia quis dolor veniam, tempore iusto! Nam, quia.
+  </li>
+  <li class="_anim--cascade-item test-text-li">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates itaque eum magnam harum incidunt minima
+    expedita
+    quam? Voluptatum nam, aspernatur quos debitis excepturi vel natus labore ipsam quae quaerat architecto amet
+    esse
+    repellendus facere cum deserunt odit a expedita illum. Provident blanditiis ipsam facere soluta velit harum
+    dignissimos. Ipsa, cupiditate.
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum doloribus est consequatur, vitae non facere
+    iusto itaque autem quas rem debitis blanditiis quo tempore dolorem officiis ipsa, nisi et! Ea?
+  </li>
+  <li class="_anim--cascade-item test-text-li">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates itaque eum magnam harum incidunt minima
+    expedita
+    quam? Voluptatum nam, aspernatur quos debitis excepturi vel natus labore ipsam quae quaerat architecto amet
+    esse
+    repellendus facere cum deserunt odit a expedita illum. Provident blanditiis ipsam facere soluta velit harum
+    dignissimos. Ipsa, cupiditate.
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus libero, aliquam veritatis facilis nisi
+    ab autem neque ratione, nihil debitis perspiciatis reprehenderit ut deserunt dolore alias earum pariatur
+    dolorem quod.
+  </li>
+</ul>
+
+остальные просто: вешаешь один из вариантов анимации или пишешь свой с custom
+Родителю вешается ov hidden и всё делается само
+*/

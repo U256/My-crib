@@ -32,6 +32,12 @@ let scroll30 = () => window.scrollBy(0, 30); // перемещает относ�
 // elem.scrollIntoView
 document.body.style.overflow = 'hidden' // запретить скролл!!!!
 
+window.onresize = function () {
+    if (window.matchMedia('(min-width: 767px)').matches) {
+        ///
+    }
+};
+
 document.body.style.overflow = ''
 //окно:
 innerWidth;  // и height - включает полоску прокрутки. Лучше использовать cloentWidth

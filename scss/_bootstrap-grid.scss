@@ -1,6 +1,9 @@
 .bootstrap-testt {
-
 	padding-top: 40px;
+
+	&__title {
+		background: #fff;
+	}
 
 	.container {
 		margin-bottom: 40px;

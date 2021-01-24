@@ -1,154 +1,342 @@
-.gradient {
-	display: inline;
-	margin: 10px;
-	padding: 5px 5px 4px 5px;
-	display: inline-block;
-	background-color: aliceblue;
-	font-size: 12px;
-	border: 1px solid #908f8f;
-	transition-property: background-color, font-size, border;
-	/*указывает, что будем анимировать*/
+.about-transition {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px;
+  border: 1px solid #000;
+  line-height: 20px;
+  transition-property: padding;
+  /* название CSS-свойств, к которым будет применен эффект перехода. Значение свойства может содержать как одно свойство, так и список свойств через запятую */
 
-	transition-duration: 2s, 1s, 1s;
-	transition-delay: 0s, 0s, 0.5s;
-	/*срок анимации*/
+  transition-duration: 1.6s;
+  /*Продолжительность перехода*/
 
-	&:hover {
-		background-color: rgba(250, 58, 202, 0.36);
-		padding: 5px 5px 4px 5px;
-		font-size: 15px;
-		border: 2px solid black;
-	}
+  transition-timing-function: linear;
+  /*формат перехода, их куча, легче гуглить*/
+
+  transition-delay: 0.3s;
+  /*задержка перед переходом*/
+
+  transition: padding 1s linear 0s;
+  /*всё сразу, можно несколько свойств через запятую*/
+
+  &:hover {
+    padding: 10px 18px;
+  }
 }
 
-#vkLink {
-	display: inline-block;
-	text-decoration: none;
-	padding: 10px;
-	border: 1px solid #000;
-	line-height: 20px;
-	transition-property: padding;
-	/* название CSS-свойств, к которым будет применен эффект перехода. Значение свойства может содержать как одно свойство, так и список свойств через запятую */
+.animation-test {
+  //врапёр для трёх блоков
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 200px;
+  border: 1px solid #000;
+  margin: 10px 10px 30px 0;
+  padding: 10px;
+  border-radius: 10px;
 
-	transition-duration: 1.6s;
-	/*Продолжительность перехода*/
+  &__title {
+    font-weight: 700;
+    width: 100%;
+    margin-bottom: 10px;
 
-	transition-timing-function: linear;
-	/*формат перехода, их куча, легче гуглить*/
+    font-size: 10px;
+  }
+}
 
-	transition-delay: 0.3s;
-	/*задержка перед переходом*/
+.transform-item {
+  width: 100px;
+  margin: 20px;
+  border: 1px solid #000;
 
-	transition: padding 1s linear 0s;
-	/*всё сразу, можно несколько свойств через запятую*/
+  &__experimental-boi {
+    transition: 1.5s;
+    width: 98px;
+    height: 98px;
+    background: #efefef url(../images/shrek.png) center/contain no-repeat;
 
-	&:hover {
-		padding: 10px 18px;
-	}
+    &._1 {
+      transform: rotate(15deg);
+    }
+
+    &._2 {
+      transform: rotateY(180deg);
+    }
+    &._3 {
+      transform: rotateX(180deg);
+    }
+    &._4 {
+      transform: scale(0.8);
+    }
+    &._5 {
+      transform: skew(12deg, 0);
+    }
+    &._6 {
+      transform: translate(7px, -7px);
+    }
+    &._7 {
+      transform: perspective(170px) rotateY(58deg);
+    }
+    &._8 {
+      transform: perspective(200px) rotateX(55deg);
+    }
+
+    &:hover {
+      transform: none;
+    }
+  }
+
+  &__about {
+    padding: 7px 0 5px 4px;
+    margin: 0;
+    font-size: 10px;
+  }
+}
+
+.animation-item {
+  width: 100px;
+  border: 1px solid #000;
+  margin: 10px;
+
+  &__test-boi {
+    width: 98px;
+    height: 98px;
+    background: #efefef url(../images/shrek.png) center/contain no-repeat;
+
+    &._1 {
+      animation-name: spinning;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-delay: 2s;
+
+      // работает только при конечном числе повторений, не infinite
+      animation-fill-mode: forwards;
+
+      &:hover {
+        animation-play-state: paused;
+      }
+
+      //универсальное:
+      animation: heartbit 4s linear infinite;
+    }
+
+    &._2 {
+      border-radius: 19px;
+      animation: spinning 6s linear infinite 1s;
+    }
+
+    &._3 {
+      animation: click 3s linear infinite 2s;
+    }
+
+    &._4 {
+      animation: flip 4s linear infinite 3s;
+    }
+
+    &._8 {
+      animation: rotorboi 8s linear infinite alternate 4s;
+    }
+  }
+
+  &__title {
+    font-size: 10px;
+    width: 100%;
+    padding: 7px 0 5px 4px;
+  }
+}
+
+.appear-item {
+  flex: 1 0 18%;
+  min-width: 100px;
+  margin: 10px;
+  border: 1px solid #000;
+
+  &._wide {
+    flex: 1 1 100%;
+  }
+
+  &__experim-boy {
+    transition: 2s;
+    width: 100%;
+    height: 98px;
+    background: #efefef url(../images/shrek.png) center/contain no-repeat;
+
+    &._in-cascade {
+      margin: 10px;
+      width: 98%;
+      background-position: left top;
+      background-repeat: repeat;
+      background-size: 64px;
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+
+  &__title {
+    padding: 7px 0 5px 4px;
+  }
+}
+
+.size-units {
+  font-size: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  &__item {
+    margin: 8px;
+    padding: 4px 10px;
+    border: 2px solid rgb(206, 206, 206);
+    border-radius: 8px;
+
+    &._ch-input-wrapper {
+      font-size: 20px;
+    }
+
+    &._em {
+      font-size: 0.8em;
+    }
+
+    &._rem {
+      font-size: 1rem;
+    }
+  }
+
+  &__input-item {
+    padding: 0;
+    font-family: monospace;
+    width: 8ch;
+  }
 }
 
 .h-wrapper {
-	border: 1px solid #000;
-	padding: 5px;
+  border: 1px solid #000;
+  padding: 5px;
 }
 
 .about-section {
-	border: 1px solid rgb(211, 211, 211);
-	border-radius: 8px;
-	margin-bottom: 10px;
+  border: 1px solid rgb(211, 211, 211);
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
 
 .smol-h {
-	font-size: 16px;
-	font-weight: 600;
-	border: none;
-	background: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  background: #fff;
 }
 
 .about-section p {
-	font-size: 14px;
-	padding-left: 18px;
+  font-size: 14px;
+  padding-left: 18px;
 }
 
-
-///////////////////////////tut
 .crying-img {
-	position: absolute;
-	bottom: 0; right: 0;
-	opacity: .7;
+  opacity: 0.7;
+  margin-bottom: 15px;
 }
-
 
 .img-wrapper {
-	height: 300px;
-	width: 300px;
-	/* тупа цвет */
-	background-color: salmon;
-	color: #fff;
+  height: 300px;
+  width: 300px;
+  /* тупа цвет */
+  background-color: salmon;
+  color: #fff;
 
-	/* устанавливает фоновое изображение (одно или несколько) */
-	background-image: linear-gradient(white, gray);
+  /* устанавливает фоновое изображение (одно или несколько) */
+  background-image: linear-gradient(white, gray);
 
-	/* repeat (по умолчанию) */
-	background-repeat: repeat-x;
+  /* repeat (по умолчанию) */
+  background-repeat: repeat-x;
 
-	/* бесполезно почти всегда, иногда нужно fixed для фона */
-	background-attachment: scroll;
+  /* бесполезно почти всегда, иногда нужно fixed для фона */
+  background-attachment: scroll;
 
-
-	/*  %	Горизонтальное смещение вычисляется по формуле ширина области расположения фона — ширина фонового изображения. Вертикальное смещение по формуле высота области расположения фона - высота фонового изображения, где размер изображения — это размер, заданный свойством background-size. Значение по умолчанию 0% 0%. */
-	/* px	Задает фиксированную длину в качестве смещения. */
-	/* left/center/right top/center/bottom  
+  /*  %	Горизонтальное смещение вычисляется по формуле ширина области расположения фона — ширина фонового изображения. Вертикальное смещение по формуле высота области расположения фона - высота фонового изображения, где размер изображения — это размер, заданный свойством background-size. Значение по умолчанию 0% 0%. */
+  /* px	Задает фиксированную длину в качестве смещения. */
+  /* left/center/right top/center/bottom  
 	Если определить только одно значение, второе будет 50%. Xpos Ypos Верхний левый угол это 0 0. Любые CSS единицы.*/
-	background-position: 0 10px;
+  background-position: 0 10px;
 
-	/*гор-верт*/
-	background-position: bottom 10px right 30px;
+  /*гор-верт*/
+  background-position: bottom 10px right 30px;
 
-	/* окантовка */
-	background-clip: border-box;
+  /* окантовка */
+  background-clip: border-box;
 
-	background-origin: border-box;
+  background-origin: border-box;
 
-	/*  %	Задает размер фонового изображения в процентах от ширины или высоты элемента, которое заполняется фоном. */
-	/* cover	Масштабирует изображение с сохранением пропорций так, чтобы его ширина или высота равнялась ширине или высоте блока. */
-	/* contain	Масштабирует изображение с сохранением пропорций таким образом, чтобы оно целиком поместилось внутри блока. */
-	background-size: contain;
+  /*  %	Задает размер фонового изображения в процентах от ширины или высоты элемента, которое заполняется фоном. */
+  /* cover	Масштабирует изображение с сохранением пропорций так, чтобы его ширина или высота равнялась ширине или высоте блока. */
+  /* contain	Масштабирует изображение с сохранением пропорций таким образом, чтобы оно целиком поместилось внутри блока. */
+  background-size: contain;
 
-	/* универсальное свойство: */
-	/* Если указываешь в краткой записи фона свойство background-size, то его значения нужно будет записать через слеш /, чтобы отделить его от свойства background-position. */
-	background-color: salmon;
-	background-image: url(/images/catpic.jpg);
-	background-position: bottom right;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-origin: border-box;
-	background-clip: border-box;
-	background-attachment: scroll;
+  /* универсальное свойство: */
+  /* Если указываешь в краткой записи фона свойство background-size, то его значения нужно будет записать через слеш /, чтобы отделить его от свойства background-position. */
+  background-color: salmon;
+  background-image: url(/images/catpic.jpg);
+  background-position: bottom right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-attachment: scroll;
 
-	background: salmon url(/images/catpic.jpg) center left/cover no-repeat;
+  background: salmon url(/images/catpic.jpg) center left/cover no-repeat;
 
-	/* при свойстве contain будет вылазить фон элемента при масштабировании*/
+  /* при свойстве contain будет вылазить фон элемента при масштабировании*/
 
-	/* Фон блока элемента может иметь несколько слоев в CSS3. Количество слоев определяется количеством значений, разделенных запятыми, указанных в свойстве background-image 
+  /* Фон блока элемента может иметь несколько слоев в CSS3. Количество слоев определяется количеством значений, разделенных запятыми, указанных в свойстве background-image 
 	Тогда перечисляются все свойства, и их значения тоже идут через запятую :
 	background-image: url(flower_rose.png), url(love.png), url(border_white.png);
 	background-position: bottom right, center center, top left; */
-
 }
 
-//.img-wrapper img {
-	/* чтобы также издеваться над замещаемыми элементами <img> <input type="image">, <embed>, <iframe>, <video>, <canvas> можно из завернуть в клетку нужной формы и использовать 
-
-	object-fit*/
-
-	/* fill	Значение по умолчанию. Содержимое замещаемого элемента полностью заполняет область контейнера, т.е. задает родителю размер.
+.img-wrapper img {
+  /* чтобы также издеваться над замещаемыми элементами <img> <input type="image">, <embed>, <iframe>, <video>, <canvas> можно из завернуть в клетку нужной формы и использовать 
+	object-fit
+	
+	fill	Значение по умолчанию. Содержимое замещаемого элемента полностью заполняет область контейнера, т.е. задает родителю размер.
 	contain
 	cover
 	scale-down	Содержимое элемента выбирает из двух значений none и contain то значение, которое даёт меньшие размеры.
 	none	Замещаемое содержимое не изменяет свои собственные размеры, чтобы поместиться и заполнить область контейнера. */
 
-	/* object-position 
+  /* object-position 
 	
-	задаёт положение содержимого замещаемого элемента внутри контейнера left/center/right top/center/bottom  px / em/ %       */
-//}
+	задаёт положение содержимого замещаемого элемента внутри контейнера left/center/right top/center/bottom  px / em/ %       
+	
+	vertival-align для положения блока
+	*/
+}
+
+.index-footer {
+  &__copyright {
+    column-count: 3;
+    //column-width: 100px;
+    column-gap: 5%;
+    column-rule: 3px solid lightblue;
+    //word-wrap property allows long words to be able to be broken and wrap onto the next line.
+    margin-bottom: 20px;
+  }
+}
+
+//shit for fun
+@keyframes rotorboi {
+  0% {
+    transition: none;
+  }
+  33% {
+    transition: scale(0.8);
+  }
+  66% {
+    transition: scale(0.8);
+  }
+  100% {
+    transition: none;
+  }
+}

@@ -39,22 +39,20 @@
     <!-- pos absolute считается от любого ' не static' родителя или если у род есть transfTranslate -->
     <!-- →→	←← ↑↑ ↓↓ -->
     <section class="top-section">
-        <h1>Главный заголовок. Он 1 такой</h1>
+        <h1>Главный заголовок h1. Он 1 такой</h1>
 
-        <p>Тут НЕ подключены async.js и dombom.js</p>
-
-        <h6>самый нижний подзаголовок. h6 Например, сноска </h6>
-        <h3 class="gradient">це градiент</h3>
+        <p>index - НЕ подключены async.js и dombom.js</p>
+        <br>
     </section>
 
     <main class="main">
-        <p> ссылка:
-            <a href="https://www.mozilla.org/ru/" title="Да, вот эту">Тыкабе<wbr>льный текст (Анкор)</a>
+        <p>
+            <a href="#" title="титл">Анкор ссылки (этот текст)</a>
         </p>
         <!-- тег <wbr> говорит, где можно разрезать огромные слова-->
         <!-- просто br - перенос строки-->
 
-        <p id="vkLink"> <a href="https://vk.com"> vkontakte</a></p>
+        <p class="about-transition"> <a href="#">transition</a></p>
 
         <p><a href="https://download.mozilla.org/?product=firefox-39.0-SSL&os=win&lang=en-US"
                 download="firefox-39-installer.exe">
@@ -63,64 +61,190 @@
         </p>
         <!-- атрибут download чтобы начать скачивание -->
 
+        <pre>
+            'pre' Tag -- pre-formatted text
+
+            Все пробелы считаются
+            Текст переносится точно как в html
+        </pre>
+
+        <p>This is<sub> subscript</sub> and <sup>superscript</sup></p>
+
+        <p>The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
+        <!-- defines an abbreviation or an acronym -->
+
         <article class="articleInMain">
             <h2>Заголовок статьи</h2>
             Заключено в тег "Артикль", как отдельный кусок текста или информации.
-            Например, карточка товара или статья
-
+            article — это специальный вид section , который обозначает независимую и самодостаточную часть страницы. На его месте <br>
+            можно использовать section, но article добавляет больше семантического значения.
+            Примеры: статья, пост в блоге, сообщение на форуме и так далее.
+            <hr>
         </article>
 
         <section>
             <br>
             <h2>Секция - как артикль, только нельзя его выдрать из контекста. Секция кода.</h2>
+            <p>A section is a thematic grouping of content, typically with a heading.
+                Cемантическое значение — объекты, которые располагаются внутри него, объединены общим смыслом.
+                Например, блок «О компании», список товаров, раздел личной информации в профиле и так далее.
+            </p>
         </section>
-
-        Разбор ошибок валидатора v3:
-        <section class="about-section">
-            <!-- Section lacks heading. Consider using h2-h6 elements to add identifying headings to all sections. -->
-            <article>
-                <h1 class="smol-h">Section - Article. Article heading h1</h1>
-                <!--  Consider using the h1 element as a top-level heading only -->
-                <p>p Warning</p>
-            </article>
+        <section>
+            Вкладывай секции и артикли друг в друга как вздумается вообще.
+            Оф сайт разрешает. (HTML Semantics, article "nesting")
         </section>
-
-        <section class="about-section">
-            <div>
-                <h1 class="smol-h">Section - div. Div heading h1</h1>
-                <p>p No warning</p>
+        <br>
+        <br>
+        <div>transform:</div>
+        <div class="animation-test">
+            <div class="transform-item">
+                <div class="transform-item__experimental-boi _1"></div>
+                <p class="transform-item__about">
+                    rotate(15deg)
+                </p>
             </div>
-        </section>
+            <div class="transform-item">
+                <div class="transform-item__experimental-boi _2"></div>
+                <p class="transform-item__about">
+                    rotateY(180deg)
+                </p>
+            </div>
+            <div class="transform-item">
+                <div class="transform-item__experimental-boi _3"></div>
+                <p class="transform-item__about">
+                    rotateX(180deg)
+                </p>
+            </div>
+            <div class="transform-item">
+                <div class="transform-item__experimental-boi _4"></div>
+                <p class="transform-item__about">
+                    scale(0.8) <br> scaleX и Y - плющат/укорачивают
+                </p>
+            </div>
+            <div class="transform-item">
+                <div class="transform-item__experimental-boi _5"></div>
+                <p class="transform-item__about">
+                    skew(12deg, 0) <br> skewX + Y
+                </p>
+            </div>
+            <div class="transform-item">
+                <div class="transform-item__experimental-boi _6"></div>
+                <p class="transform-item__about">
+                    translate(7px, - 7px) <br> translateX + Y
+                </p>
+            </div>
+            <div class="transform-item">
+                <div class="transform-item__experimental-boi _7"></div>
+                <p class="transform-item__about">
+                    perspective(170px) rotateY(58deg)
+                </p>
+            </div>
+            <div class="transform-item">
+                <div class="transform-item__experimental-boi _8"></div>
+                <p class="transform-item__about">
+                    perspective(200px) rotateX(55deg)
+                </p>
+            </div>
+        </div>
 
-        <section class="about-section">
-            <h1 class="smol-h">Section. Section heading h1</h1>
-            <article>
-                <h2 class="smol-h">Section - Article. Article heading h1</h2>
-                <p>p No warning</p>
-            </article>
-        </section>
+        animation:
+        <div class="animation-test">
+            <div class="animation-test__title">
 
-        <section class="about-section">
+                можно несколько свойств через запятую указывать
+            </div>
+            <div class="animation-item">
+                <div class="animation-item__test-boi _1"></div>
+                <div class="animation-item__title">heartbit 4s linear infinite 2s forwards</div>
+            </div>
+            <div class="animation-item">
+                <div class="animation-item__test-boi _2"></div>
+                <div class="animation-item__title">spinning 6s linear infinite alternate 2s</div>
+            </div>
+            <div class="animation-item">
+                <div class="animation-item__test-boi _3"></div>
+                <div class="animation-item__title">click 3s linear infinite 2s forwards</div>
+            </div>
+            <div class="animation-item">
+                <div class="animation-item__test-boi _4"></div>
+                <div class="animation-item__title">flip 4s linear infinite 3s forwards</div>
+            </div>
+            <div class="animation-item">
+                <div class="animation-item__test-boi _5"></div>
+                <div class="animation-item__title"></div>
+            </div>
+            <div class="animation-item">
+                <div class="animation-item__test-boi _6"></div>
+                <div class="animation-item__title"></div>
+            </div>
+            <div class="animation-item">
+                <div class="animation-item__test-boi _7"></div>
+                <div class="animation-item__title"></div>
+            </div>
+            <div class="animation-item">
+                <div class="animation-item__test-boi _8"></div>
+                <div class="animation-item__title"></div>
+            </div>
+        </div>
 
-            <div>
-                <div>
-                    <h1 class="smol-h">Section -div -div. Div heading h1</h1>
+        appear:
+        <div class="animation-test">
+            <div class="appear-item">
+                <div class="_appear--up appear-item__experim-boy"></div>
+                <div class="appear-item__title">_appear--up</div>
+            </div>
+            <div class="appear-item">
+                <div class="_appear--down appear-item__experim-boy"></div>
+                <div class="appear-item__title">_appear--down</div>
+            </div>
+            <div class="appear-item">
+                <div class="_appear--left appear-item__experim-boy"></div>
+                <div class="appear-item__title">_appear--left</div>
+            </div>
+            <div class="appear-item">
+                <div class="_appear--right appear-item__experim-boy"></div>
+                <div class="appear-item__title">_appear--right</div>
+            </div>
+            <div class="appear-item">
+                <div class="_appear--jump-out appear-item__experim-boy"></div>
+                <div class="appear-item__title">_appear--jump-out</div>
+            </div>
+            <div class="appear-item">
+                <div class="_appear--zoom-in appear-item__experim-boy"></div>
+                <div class="appear-item__title">_appear--zoom-in</div>
+            </div>
+            <div class="appear-item">
+                <div class="_appear--lean appear-item__experim-boy"></div>
+                <div class="appear-item__title">_appear--lean</div>
+            </div>
+            <div class="appear-item">
+                <div class="_appear--impend appear-item__experim-boy"></div>
+                <div class="appear-item__title">_appear--impend</div>
+            </div>
+            <div class="appear-item _wide">
+                <div class="_appear--cascade-wrapper">
+                    <div class="_appear--cascade-item appear-item__experim-boy _in-cascade"></div>
+                    <div class="_appear--cascade-item appear-item__experim-boy _in-cascade"></div>
+                    <div class="_appear--cascade-item appear-item__experim-boy _in-cascade"></div>
+                    <div class="_appear--cascade-item appear-item__experim-boy _in-cascade"></div>
                 </div>
-                <p>p No warning</p>
+                <div class="appear-item__title"> _appear--cascade-wrapper > _appear--cascade-item*4 </div>
             </div>
-        </section>
+        </div>
 
-        <section class="about-section">
-            <div>
-                <div>
-                    <h2 class="smol-h">Section - div -div. Div heading h2</h2>
-                    <p>p No warning</p>
-                </div>
+        size units (font-size: 30px;)
+        <div class="size-units">
+            <div class="size-units__item _ch-input-wrapper">
+                <input class="size-units__input-item" type="text"> Ширина этого инпута - <b>8 Ch</b>
             </div>
-        </section>
+            <div class="size-units__item _em"><b>Em</b> Controlls by (parrent) {fz}</div>
+            <div class="size-units__item _rem"><b>1 Rem</b> Controlls by html {fz}</div>
+        </div>
 
-
-
+        <div>также есть библиотека <a style="display: inline;" href="https://animate.style/">animate css</a></div>
+        
+        <hr>
         <figure>
             <img id="currentElem" style="width: 120px;" alt="поясняющий атрибут"
                 src="https://raw.githubusercontent.com/mdn/beginner-html-site/gh-pages/images/firefox-icon.png">
@@ -128,6 +252,7 @@
         </figure>
         <!--figure это удобный тег, сразу в себе содержащий пояснение, что это медиа-->
 
+        По спецификации у img рекомендуется задавать w & h
         <a href="https://www.mozilla.org/ru/"><img class="crying-img"
                 alt="логотип mozilla со ссылкой на их домашнюю страницу" src="images/jipegavatar.jpg"
                 title="текст, вылезет при наведении" height="160" width="160" /></a>
@@ -137,13 +262,22 @@
             Работа с картинками
         </div>
 
+
+        <h3>Image map</h3>
+        <img src="images/workplace.jpg" alt="Workplace" usemap="#workmap">
+        
+        <map name="workmap">
+            <area shape="rect" coords="34,44,270,350" alt="Computer" href="computer.htm">
+            <area shape="rect" coords="290,172,333,250" alt="Phone" href="phone.htm">
+            <area shape="circle" coords="337,300,44" alt="Coffee" href="coffee.htm">
+        </map>
+
     </main>
     <hr> <!-- полоса - разделитель -->
 
     <section class="bootstrap-testt">
-        <h1>Bootstrap grid</h1>
-        <h2>aaa</h2>
         <div class="container">
+            <h3 class="col-xs-11 col-6 p-auto m-auto justify-self-start bootstrap-testt__title">Bootstrap grid</h3>
             <!-- container-fluid 4 whole-screen container -->
             <div class="row align-items-center lasure-row">
                 <div class="col">
@@ -221,6 +355,9 @@
                 </div>
             </div>
         </div>
+        <div class="container-md">
+            <!-- ширина 100% до средней (medium) точки останова -->
+        </div>
         <!-- отступы
     
             m-5 - margin: 3rem !important;
@@ -248,8 +385,8 @@
         -->
     </section>
     <section class="table-section">
-        <h1>Table-section</h1>
         <div class="container">
+            <h3>Table-section</h3>
             <table class="table">
                 <thead>
                     <tr>
@@ -283,21 +420,15 @@
         </div>
     </section>
 
-    <footer>
-        ©Авторские права никому не принадлежат, 2020. Ничего не защищено.
+    <footer class="index-footer">
+        <address>
+            Written by Лёшка.<br>
+            Box 564, Disneyland<br>
+        </address>
+        <div class="index-footer__copyright"> ©Авторские права никому не принадлежат, 2020. Ничего не защищено. Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, sapiente! Lorem! column-count: 3;</div>
     </footer>
 
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
-
+    <script src="scripts/anim.js"></script>
     <script src="scripts/justToKnow.js"></script>
     <script src="scripts/objescts.js"></script>
     <script src="scripts/functions.js"></script>

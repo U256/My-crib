@@ -139,6 +139,11 @@
 		justify-self: left;
 		//align-self: end;
 	}
+
+	&:nth-child(5) {
+		grid-column: minmax(2fr, 4fr);
+	}
+
 	&:last-child {
 		align-self: end;
 	}

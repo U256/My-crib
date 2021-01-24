@@ -110,5 +110,3 @@ function urlGenerator(domain) {
 }
 const comUrl = urlGenerator('com')
 comUrl('google') // https://google.com
-
-

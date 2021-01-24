@@ -14,7 +14,6 @@ main, header, .top-section, footer {
   max-width: 1200px;
   padding: 0 15px;
   margin: 0 auto;
-  font-family: sans-serif;
   font-size: 20px;
   font-weight: normal;
 }
@@ -61,7 +60,7 @@ h1 {
           justify-content: space-between;
 }
 
-@media (max-width: 575px) {
+@media (max-width: 757px) {
   .header-nav ul {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -77,6 +76,9 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   list-style-type: none;
   background-color: #ff92deda;
   -webkit-box-shadow: 4px 4px 5px #8a8a8a;
@@ -85,11 +87,12 @@ h1 {
   /*гор. смещение вправо -- вертикальное вниз -- сила размытия -- цвет  */
 }
 
-@media (max-width: 575px) {
+@media (max-width: 757px) {
   .nav-li {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 45%;
             flex: 0 0 45%;
+    margin: 8px 4px;
   }
 }
 
@@ -103,32 +106,11 @@ h1 {
   text-decoration: none;
 }
 
-.gradient {
-  display: inline;
-  margin: 10px;
-  padding: 5px 5px 4px 5px;
-  display: inline-block;
-  background-color: aliceblue;
-  font-size: 12px;
-  border: 1px solid #908f8f;
-  -webkit-transition-property: background-color, font-size, border;
-  transition-property: background-color, font-size, border;
-  /*указывает, что будем анимировать*/
-  -webkit-transition-duration: 2s, 1s, 1s;
-          transition-duration: 2s, 1s, 1s;
-  -webkit-transition-delay: 0s, 0s, 0.5s;
-          transition-delay: 0s, 0s, 0.5s;
-  /*срок анимации*/
+.nav-li a:visited {
+  color: #313131;
 }
 
-.gradient:hover {
-  background-color: rgba(250, 58, 202, 0.36);
-  padding: 5px 5px 4px 5px;
-  font-size: 15px;
-  border: 2px solid black;
-}
-
-#vkLink {
+.about-transition {
   display: inline-block;
   text-decoration: none;
   padding: 10px;
@@ -151,8 +133,235 @@ h1 {
   /*всё сразу, можно несколько свойств через запятую*/
 }
 
-#vkLink:hover {
+.about-transition:hover {
   padding: 10px 18px;
+}
+
+.animation-test {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  min-height: 200px;
+  border: 1px solid #000;
+  margin: 10px 10px 30px 0;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.animation-test__title {
+  font-weight: 700;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 10px;
+}
+
+.transform-item {
+  width: 100px;
+  margin: 20px;
+  border: 1px solid #000;
+}
+
+.transform-item__experimental-boi {
+  -webkit-transition: 1.5s;
+  transition: 1.5s;
+  width: 98px;
+  height: 98px;
+  background: #efefef url(../images/shrek.png) center/contain no-repeat;
+}
+
+.transform-item__experimental-boi._1 {
+  -webkit-transform: rotate(15deg);
+          transform: rotate(15deg);
+}
+
+.transform-item__experimental-boi._2 {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.transform-item__experimental-boi._3 {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+.transform-item__experimental-boi._4 {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+
+.transform-item__experimental-boi._5 {
+  -webkit-transform: skew(12deg, 0);
+          transform: skew(12deg, 0);
+}
+
+.transform-item__experimental-boi._6 {
+  -webkit-transform: translate(7px, -7px);
+          transform: translate(7px, -7px);
+}
+
+.transform-item__experimental-boi._7 {
+  -webkit-transform: perspective(170px) rotateY(58deg);
+          transform: perspective(170px) rotateY(58deg);
+}
+
+.transform-item__experimental-boi._8 {
+  -webkit-transform: perspective(200px) rotateX(55deg);
+          transform: perspective(200px) rotateX(55deg);
+}
+
+.transform-item__experimental-boi:hover {
+  -webkit-transform: none;
+          transform: none;
+}
+
+.transform-item__about {
+  padding: 7px 0 5px 4px;
+  margin: 0;
+  font-size: 10px;
+}
+
+.animation-item {
+  width: 100px;
+  border: 1px solid #000;
+  margin: 10px;
+}
+
+.animation-item__test-boi {
+  width: 98px;
+  height: 98px;
+  background: #efefef url(../images/shrek.png) center/contain no-repeat;
+}
+
+.animation-item__test-boi._1 {
+  -webkit-animation-name: spinning;
+          animation-name: spinning;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation: heartbit 4s linear infinite;
+          animation: heartbit 4s linear infinite;
+}
+
+.animation-item__test-boi._1:hover {
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+}
+
+.animation-item__test-boi._2 {
+  border-radius: 19px;
+  -webkit-animation: spinning 6s linear infinite 1s;
+          animation: spinning 6s linear infinite 1s;
+}
+
+.animation-item__test-boi._3 {
+  -webkit-animation: click 3s linear infinite 2s;
+          animation: click 3s linear infinite 2s;
+}
+
+.animation-item__test-boi._4 {
+  -webkit-animation: flip 4s linear infinite 3s;
+          animation: flip 4s linear infinite 3s;
+}
+
+.animation-item__test-boi._8 {
+  -webkit-animation: rotorboi 8s linear infinite alternate 4s;
+          animation: rotorboi 8s linear infinite alternate 4s;
+}
+
+.animation-item__title {
+  font-size: 10px;
+  width: 100%;
+  padding: 7px 0 5px 4px;
+}
+
+.appear-item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 18%;
+          flex: 1 0 18%;
+  min-width: 100px;
+  margin: 10px;
+  border: 1px solid #000;
+}
+
+.appear-item._wide {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+}
+
+.appear-item__experim-boy {
+  -webkit-transition: 2s;
+  transition: 2s;
+  width: 100%;
+  height: 98px;
+  background: #efefef url(../images/shrek.png) center/contain no-repeat;
+}
+
+.appear-item__experim-boy._in-cascade {
+  margin: 10px;
+  width: 98%;
+  background-position: left top;
+  background-repeat: repeat;
+  background-size: 64px;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  opacity: 0;
+}
+
+.appear-item__title {
+  padding: 7px 0 5px 4px;
+}
+
+.size-units {
+  font-size: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.size-units__item {
+  margin: 8px;
+  padding: 4px 10px;
+  border: 2px solid #cecece;
+  border-radius: 8px;
+}
+
+.size-units__item._ch-input-wrapper {
+  font-size: 20px;
+}
+
+.size-units__item._em {
+  font-size: 0.8em;
+}
+
+.size-units__item._rem {
+  font-size: 1rem;
+}
+
+.size-units__input-item {
+  padding: 0;
+  font-family: monospace;
+  width: 8ch;
 }
 
 .h-wrapper {
@@ -179,10 +388,8 @@ h1 {
 }
 
 .crying-img {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  opacity: .7;
+  opacity: 0.7;
+  margin-bottom: 15px;
 }
 
 .img-wrapper {
@@ -230,17 +437,71 @@ h1 {
 	background-position: bottom right, center center, top left; */
 }
 
-/* чтобы также издеваться над замещаемыми элементами <img> <input type="image">, <embed>, <iframe>, <video>, <canvas> можно из завернуть в клетку нужной формы и использовать 
-
-	object-fit*/
-/* fill	Значение по умолчанию. Содержимое замещаемого элемента полностью заполняет область контейнера, т.е. задает родителю размер.
+.img-wrapper img {
+  /* чтобы также издеваться над замещаемыми элементами <img> <input type="image">, <embed>, <iframe>, <video>, <canvas> можно из завернуть в клетку нужной формы и использовать 
+	object-fit
+	
+	fill	Значение по умолчанию. Содержимое замещаемого элемента полностью заполняет область контейнера, т.е. задает родителю размер.
 	contain
 	cover
 	scale-down	Содержимое элемента выбирает из двух значений none и contain то значение, которое даёт меньшие размеры.
 	none	Замещаемое содержимое не изменяет свои собственные размеры, чтобы поместиться и заполнить область контейнера. */
-/* object-position 
+  /* object-position 
 	
-	задаёт положение содержимого замещаемого элемента внутри контейнера left/center/right top/center/bottom  px / em/ %       */
+	задаёт положение содержимого замещаемого элемента внутри контейнера left/center/right top/center/bottom  px / em/ %       
+	
+	vertival-align для положения блока
+	*/
+}
+
+.index-footer__copyright {
+  -webkit-column-count: 3;
+          column-count: 3;
+  -webkit-column-gap: 5%;
+          column-gap: 5%;
+  -webkit-column-rule: 3px solid lightblue;
+          column-rule: 3px solid lightblue;
+  margin-bottom: 20px;
+}
+
+@-webkit-keyframes rotorboi {
+  0% {
+    -webkit-transition: none;
+    transition: none;
+  }
+  33% {
+    -webkit-transition: scale(0.8);
+    transition: scale(0.8);
+  }
+  66% {
+    -webkit-transition: scale(0.8);
+    transition: scale(0.8);
+  }
+  100% {
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+
+@keyframes rotorboi {
+  0% {
+    -webkit-transition: none;
+    transition: none;
+  }
+  33% {
+    -webkit-transition: scale(0.8);
+    transition: scale(0.8);
+  }
+  66% {
+    -webkit-transition: scale(0.8);
+    transition: scale(0.8);
+  }
+  100% {
+    -webkit-transition: none;
+    transition: none;
+  }
+}
+
 .section11 {
   gap: 5px;
   margin-bottom: 20px;
@@ -340,6 +601,10 @@ h1 {
       justify-self: left;
 }
 
+.section3__item:nth-child(5) {
+  grid-column: minmax(2fr, 4fr);
+}
+
 .section3__item:last-child {
   -ms-flex-item-align: end;
       -ms-grid-row-align: end;
@@ -348,6 +613,10 @@ h1 {
 
 .bootstrap-testt {
   padding-top: 40px;
+}
+
+.bootstrap-testt__title {
+  background: #fff;
 }
 
 .bootstrap-testt .container {
@@ -478,6 +747,450 @@ button, a {
   margin: 10px 0;
 }
 
+.ov-hidden {
+  overflow: hidden;
+}
+
+._appear--up {
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
+  -webkit-transition-duration: 0.6s;
+          transition-duration: 0.6s;
+  -webkit-transform: translate(0, 60%);
+          transform: translate(0, 60%);
+  opacity: 0;
+}
+
+._appear--down {
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
+  -webkit-transition-duration: 0.6s;
+          transition-duration: 0.6s;
+  -webkit-transform: translate(0, -60%);
+          transform: translate(0, -60%);
+  opacity: 0;
+}
+
+._appear--left {
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
+  -webkit-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+  -webkit-transform: translate(-60%, 0);
+          transform: translate(-60%, 0);
+  opacity: 0;
+}
+
+._appear--right {
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
+  -webkit-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+  -webkit-transform: translate(60%, 0);
+          transform: translate(60%, 0);
+  opacity: 0;
+}
+
+._appear--jump-out {
+  -webkit-transform: scale(0.3, 0.1);
+          transform: scale(0.3, 0.1);
+  opacity: 0;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+  -webkit-transition-timing-function: cubic-bezier(0.28, 0.62, 0.65, 1.64);
+          transition-timing-function: cubic-bezier(0.28, 0.62, 0.65, 1.64);
+}
+
+._appear--zoom-in {
+  -webkit-transform: scale(0.7, 0.7);
+          transform: scale(0.7, 0.7);
+  opacity: 0;
+  -webkit-transition-property: opacity, -webkit-transform;
+  transition-property: opacity, -webkit-transform;
+  transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+  -webkit-transition-timing-function: linear;
+          transition-timing-function: linear;
+}
+
+._appear--lean {
+  -webkit-transform: perspective(200px) rotateX(50deg) scale(0.9);
+          transform: perspective(200px) rotateX(50deg) scale(0.9);
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 0.6s;
+          transition-duration: 0.6s;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+  -webkit-transition-timing-function: linear;
+          transition-timing-function: linear;
+}
+
+._appear--impend {
+  -webkit-transform: perspective(200px) rotateX(-50deg) scale(0.9);
+          transform: perspective(200px) rotateX(-50deg) scale(0.9);
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 0.6s;
+          transition-duration: 0.6s;
+  -webkit-transition-delay: 0.2s;
+          transition-delay: 0.2s;
+  -webkit-transition-timing-function: linear;
+          transition-timing-function: linear;
+}
+
+._appear--cascade-wrapper._appeared ._appear--cascade-item {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+
+._appear--cascade-wrapper._appeared ._appear--cascade-item:nth-child(1) {
+  -webkit-transition: opacity 0.8s, -webkit-transform 0.8s ease 0s;
+  transition: opacity 0.8s, -webkit-transform 0.8s ease 0s;
+  transition: transform 0.8s ease 0s, opacity 0.8s;
+  transition: transform 0.8s ease 0s, opacity 0.8s, -webkit-transform 0.8s ease 0s;
+}
+
+._appear--cascade-wrapper._appeared ._appear--cascade-item:nth-child(2) {
+  -webkit-transition: opacity 0.8s ease 0.4s, -webkit-transform 0.8s ease 0.4s;
+  transition: opacity 0.8s ease 0.4s, -webkit-transform 0.8s ease 0.4s;
+  transition: transform 0.8s ease 0.4s, opacity 0.8s ease 0.4s;
+  transition: transform 0.8s ease 0.4s, opacity 0.8s ease 0.4s, -webkit-transform 0.8s ease 0.4s;
+}
+
+._appear--cascade-wrapper._appeared ._appear--cascade-item:nth-child(3) {
+  -webkit-transition: opacity 0.8s ease 0.6s, -webkit-transform 0.8s ease 0.6s;
+  transition: opacity 0.8s ease 0.6s, -webkit-transform 0.8s ease 0.6s;
+  transition: transform 0.8s ease 0.6s, opacity 0.8s ease 0.6s;
+  transition: transform 0.8s ease 0.6s, opacity 0.8s ease 0.6s, -webkit-transform 0.8s ease 0.6s;
+}
+
+._appear--cascade-wrapper._appeared ._appear--cascade-item:nth-child(4) {
+  -webkit-transition: opacity 0.8s ease 0.8s, -webkit-transform 0.8s ease 0.8s;
+  transition: opacity 0.8s ease 0.8s, -webkit-transform 0.8s ease 0.8s;
+  transition: transform 0.8s ease 0.8s, opacity 0.8s ease 0.8s;
+  transition: transform 0.8s ease 0.8s, opacity 0.8s ease 0.8s, -webkit-transform 0.8s ease 0.8s;
+}
+
+._appear--cascade-wrapper._appeared ._appear--cascade-item:nth-child(5) {
+  -webkit-transition: opacity 0.8s ease 1s, -webkit-transform 0.8s ease 1s;
+  transition: opacity 0.8s ease 1s, -webkit-transform 0.8s ease 1s;
+  transition: transform 0.8s ease 1s, opacity 0.8s ease 1s;
+  transition: transform 0.8s ease 1s, opacity 0.8s ease 1s, -webkit-transform 0.8s ease 1s;
+}
+
+._appear--cascade-wrapper._appeared ._appear--cascade-item:nth-child(6) {
+  -webkit-transition: opacity 0.8s ease 1.2s, -webkit-transform 0.8s ease 1.2s;
+  transition: opacity 0.8s ease 1.2s, -webkit-transform 0.8s ease 1.2s;
+  transition: transform 0.8s ease 1.2s, opacity 0.8s ease 1.2s;
+  transition: transform 0.8s ease 1.2s, opacity 0.8s ease 1.2s, -webkit-transform 0.8s ease 1.2s;
+}
+
+._appear--cascade-wrapper._appeared ._appear--cascade-item:nth-child(7) {
+  -webkit-transition: opacity 0.8s ease 1.4s, -webkit-transform 0.8s ease 1.4s;
+  transition: opacity 0.8s ease 1.4s, -webkit-transform 0.8s ease 1.4s;
+  transition: transform 0.8s ease 1.4s, opacity 0.8s ease 1.4s;
+  transition: transform 0.8s ease 1.4s, opacity 0.8s ease 1.4s, -webkit-transform 0.8s ease 1.4s;
+}
+
+._appeared {
+  -webkit-transform: none;
+          transform: none;
+  opacity: 1;
+}
+
+.test-text-ul {
+  margin-top: 200px;
+  padding: 20px;
+  border: 1px solid #000;
+  text-align: justify;
+  background-color: #fef;
+  list-style-type: none;
+}
+
+.test-text-li {
+  font-size: 14px;
+  margin-bottom: 15px;
+  padding: 10px;
+  font-weight: 400;
+  letter-spacing: 0.6px;
+  word-spacing: 4px;
+  border: 1px solid #8b8989;
+  background: #eff;
+  border-radius: 10px;
+}
+
+@-webkit-keyframes spinning {
+  0% {
+    -webkit-transform: none;
+            transform: none;
+  }
+  5% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  10% {
+    border-radius: 6px;
+  }
+  15% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+  20% {
+    -webkit-transform: none;
+            transform: none;
+    border-radius: 19px;
+  }
+}
+
+@keyframes spinning {
+  0% {
+    -webkit-transform: none;
+            transform: none;
+  }
+  5% {
+    -webkit-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  10% {
+    border-radius: 6px;
+  }
+  15% {
+    -webkit-transform: rotate(-10deg);
+            transform: rotate(-10deg);
+  }
+  20% {
+    -webkit-transform: none;
+            transform: none;
+    border-radius: 19px;
+  }
+}
+
+@-webkit-keyframes click {
+  0% {
+    -webkit-transform: none;
+            transform: none;
+  }
+  2% {
+    -webkit-transform: translate(2px, 2px);
+            transform: translate(2px, 2px);
+  }
+  4% {
+    -webkit-transform: none;
+            transform: none;
+  }
+  6% {
+    -webkit-transform: translate(2px, 2px);
+            transform: translate(2px, 2px);
+  }
+  8% {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes click {
+  0% {
+    -webkit-transform: none;
+            transform: none;
+  }
+  2% {
+    -webkit-transform: translate(2px, 2px);
+            transform: translate(2px, 2px);
+  }
+  4% {
+    -webkit-transform: none;
+            transform: none;
+  }
+  6% {
+    -webkit-transform: translate(2px, 2px);
+            transform: translate(2px, 2px);
+  }
+  8% {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@-webkit-keyframes heartbit {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  4% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  8% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  12% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  16% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes heartbit {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  4% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  8% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  12% {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  16% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes flip {
+  0% {
+    -webkit-transform: none;
+            transform: none;
+  }
+  8% {
+    -webkit-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+  }
+  16% {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes flip {
+  0% {
+    -webkit-transform: none;
+            transform: none;
+  }
+  8% {
+    -webkit-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+  }
+  16% {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@-webkit-keyframes clickbait {
+  0% {
+    -webkit-transform: none;
+            transform: none;
+  }
+  2% {
+    -webkit-transform: scaleX(1.05);
+            transform: scaleX(1.05);
+  }
+  6% {
+    -webkit-transform: scaleX(0.95);
+            transform: scaleX(0.95);
+  }
+  10% {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes clickbait {
+  0% {
+    -webkit-transform: none;
+            transform: none;
+  }
+  2% {
+    -webkit-transform: scaleX(1.05);
+            transform: scaleX(1.05);
+  }
+  6% {
+    -webkit-transform: scaleX(0.95);
+            transform: scaleX(0.95);
+  }
+  10% {
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+/*
+Попробовать:
+<ul class="test-text-ul _anim--cascade-wrapper">
+  <li class="_anim--cascade-item test-text-li">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates itaque eum magnam harum incidunt minima
+    expedita quam? Voluptatum nam, aspernatur quos debitis excepturi vel natus labore ipsam quae quaerat
+    architecto amet esse repellendus facere cum deserunt odit a expedita illum. Provident blanditiis ipsam
+    facere soluta velit harum dignissimos. Ipsa, cupiditate.
+    Lorem ipsum dolor sit amet.
+  </li>
+  <li class="_anim--cascade-item test-text-li">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates itaque eum magnam harum incidunt minima
+    expedita
+    quam? Voluptatum nam, aspernatur quos debitis excepturi vel natus labore ipsam quae quaerat architecto amet
+    esse
+    repellendus facere cum deserunt odit a expedita illum. Provident blanditiis ipsam facere soluta velit harum
+    dignissimos. Ipsa, cupiditate.
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex labore magnam dicta est ipsa, placeat quam porro
+    sunt facere nam omnis aliquid mollitia quis dolor veniam, tempore iusto! Nam, quia.
+  </li>
+  <li class="_anim--cascade-item test-text-li">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates itaque eum magnam harum incidunt minima
+    expedita
+    quam? Voluptatum nam, aspernatur quos debitis excepturi vel natus labore ipsam quae quaerat architecto amet
+    esse
+    repellendus facere cum deserunt odit a expedita illum. Provident blanditiis ipsam facere soluta velit harum
+    dignissimos. Ipsa, cupiditate.
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum doloribus est consequatur, vitae non facere
+    iusto itaque autem quas rem debitis blanditiis quo tempore dolorem officiis ipsa, nisi et! Ea?
+  </li>
+  <li class="_anim--cascade-item test-text-li">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates itaque eum magnam harum incidunt minima
+    expedita
+    quam? Voluptatum nam, aspernatur quos debitis excepturi vel natus labore ipsam quae quaerat architecto amet
+    esse
+    repellendus facere cum deserunt odit a expedita illum. Provident blanditiis ipsam facere soluta velit harum
+    dignissimos. Ipsa, cupiditate.
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus libero, aliquam veritatis facilis nisi
+    ab autem neque ratione, nihil debitis perspiciatis reprehenderit ut deserunt dolore alias earum pariatur
+    dolorem quod.
+  </li>
+</ul>
+
+остальные просто: вешаешь один из вариантов анимации или пишешь свой с custom
+Родителю вешается ov hidden и всё делается само
+*/
 /* Псевдоклассы!   ссылка, по которой пользователь ещё не переходил */
 a:link {
   color: #ff2e90;
@@ -499,5 +1212,15 @@ p::-moz-selection {
 }
 p::selection {
   background-color: #ff2e90;
+}
+
+.visually-hidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
 }
 /*# sourceMappingURL=main.css.map */

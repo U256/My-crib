@@ -10,11 +10,11 @@ exmpl: section-title, label-text
 
 можно совмещать блок и элемент в одном class="navigation_subtitle subtitle" */
 
+
 main, header, .top-section, footer{
 	max-width: 1200px;
 	padding: 0 15px;
 	margin: 0 auto;
-	font-family: sans-serif;
 	font-size: 20px;
 	font-weight: normal;
 }
@@ -28,6 +28,7 @@ h1, h2, h3, h4 {
 	font-style: normal;
 	border: 1px solid #3163fb;
 	border-radius: 0 15px;
+	//font: 20px Arial, sans-serif;
 }
 
 h1 {
@@ -52,7 +53,7 @@ h1 {
     display: flex;
 		justify-content: space-between;
 		
-		@media (max-width: 575px) {
+		@media (max-width: 757px) {
 			flex-wrap: wrap;
 		}
 	}
@@ -64,14 +65,16 @@ h1 {
 	padding: 5px 10px;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	list-style-type: none;
 	background-color: #ff92deda;
 	box-shadow: 4px 4px 5px rgb(138, 138, 138);
 	border-radius: 8px;
 	/*гор. смещение вправо -- вертикальное вниз -- сила размытия -- цвет  */
 
-	@media (max-width: 575px) {
+	@media (max-width: 757px) {
 			flex: 0 0 45%;
+			margin: 8px 4px;
 		}
 
 	&_active {
@@ -82,6 +85,10 @@ h1 {
 		color: rgb(49, 49, 49);
 		margin: 0;
 		text-decoration: none;
+
+		&:visited {
+			color: rgb(49, 49, 49);
+		}
 	}
 }
 
@@ -92,6 +99,8 @@ h1 {
 @import "_ajax-page-style";
 @import "_dom-bom-page-style";
 @import "_tables-forms-page-style";
+
+@import "animation-for-items";
 
 /* Псевдоклассы!   ссылка, по которой пользователь ещё не переходил */
 a:link {
@@ -123,5 +132,16 @@ input:focus {
 /* Псевдоэлементы!  по выбору куска текста*/
 p::selection {
 	background-color: #ff2e90;
+}
+
+.visually-hidden {
+	// чтобы не вырывать из верски, но сделать невидимым
+	position: absolute;
+	top: 0;
+	left: 0;
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
 }
 
